@@ -1,0 +1,11 @@
+language: ruby
+rvm:
+  - "2.0.0"
+env:
+  - DB=postgresql
+bundler_args: --without development:production
+script:
+  - bundle exec rake
+before_script:
+  - psql -c 'create database simple_bbs_test' -U postgres
+  - RAILS_ENV=test bundle exec rake db:migrate
