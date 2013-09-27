@@ -66,6 +66,17 @@ ul.pagination {
   margin: 0px 0px 5px 0px;
 }
 
+#new_topic {
+  margin: 10px 0px;
+  textarea {
+    margin-bottom: 10px;
+  }
+
+  select {
+    padding: 0px;
+  }
+}
+
 #replies {
   .reply {
     padding: 10px;
@@ -84,4 +95,8 @@ ul.pagination {
       }
     }
   }
+}
+
+#new_reply {
+  margin-top: 10px;
 }
