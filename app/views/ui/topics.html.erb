@@ -1,0 +1,210 @@
+<div class="row">
+  <div class="col-lg-12">
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">ノード</a></li>
+      <li class="active">人気スレッド</li>
+    </ul>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-9">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <center>
+          <div class="btn-group">
+            <button class="btn btn-default" disabled>人気スレッド</button>
+            <button class="btn btn-default">お気に入り多い</button>
+            <button class="btn btn-default">書き込みなし</button>
+            <button class="btn btn-default">最近作成</button>
+          </div>
+        </center>
+      </div>
+      <ul class="list-group">
+        <li class="list-group-item topic-item">
+          <div class="pull-left gravatar">
+            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+          </div>
+          <div class="right_info">
+            <span class="pull-right label label-info">
+              12
+            </span>
+            <div class="infos">
+              <div class="title">
+                <%= link_to "エンディング問題" %>
+              </div>
+              <div class="info">
+                <%= link_to "Yukihiro" %>
+                ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item topic-item">
+          <div class="pull-left gravatar">
+            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+          </div>
+          <div class="right_info">
+            <span class="pull-right label label-info">
+              12
+            </span>
+            <div class="title">
+              <%= link_to "エンディング問題" %>
+            </div>
+            <div class="info">
+              <%= link_to "Yukihiro" %>
+              ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item topic-item">
+          <div class="pull-left gravatar">
+            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+          </div>
+          <div class="right_info">
+            <span class="pull-right label label-info">
+              12
+            </span>
+            <div class="title">
+              <%= link_to "エンディング問題" %>
+            </div>
+            <div class="info">
+              <%= link_to "Yukihiro" %>
+              ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item topic-item">
+          <div class="pull-left gravatar">
+            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+          </div>
+          <div class="right_info">
+            <span class="pull-right label label-info">
+              12
+            </span>
+            <div class="title">
+              <%= link_to "エンディング問題" %>
+            </div>
+            <div class="info">
+              <%= link_to "Yukihiro" %>
+              ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+            </div>
+          </div>
+        </li>
+        <li class="list-group-item topic-item">
+          <div class="pull-left gravatar">
+            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+          </div>
+          <div class="right_info">
+            <span class="pull-right label label-info">
+              12
+            </span>
+            <div class="title">
+              <%= link_to "エンディング問題" %>
+            </div>
+            <div class="info">
+              <%= link_to "Yukihiro" %>
+              ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+            </div>
+          </div>
+        </li>
+      </ul>
+
+      <div class="panel-footer">
+        <center>
+          <ul class="pagination">
+            <li><a href="#">前のページ</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">次のページ</a></li>
+          </ul>
+        </center>
+      </div>
+    </div>
+
+    <div id="sections" class="panel panel-default">
+      <div class="panel-heading text-center">ノードナビゲーション</div>
+      <ul class="list-group">
+        <li class="list-group-item">
+          <label for="">Ruby</label>
+          <%= link_to 'Ruby' %>
+          <%= link_to 'Rails' %>
+          <%= link_to 'Gem' %>
+          <%= link_to 'リファクタリング' %>
+          <%= link_to 'Testing' %>
+          <%= link_to 'Sinatra' %>
+          <%= link_to 'デプロイ' %>
+          <%= link_to 'RVM' %>
+          <%= link_to 'オープンソースプロジェクト' %>
+          <%= link_to '初心者質問' %>
+          <%= link_to 'JRuby' %>
+        </li>
+        <li class="list-group-item">
+          <label for="">シェア</label>
+          <%= link_to '健康' %>
+          <%= link_to 'ツール' %>
+          <%= link_to '本' %>
+          <%= link_to 'Mac' %>
+          <%= link_to '起業' %>
+        </li>
+        <li class="list-group-item">
+          <label for="">WEB開発</label>
+          <%= link_to 'MongoDB' %>
+          <%= link_to 'Redis' %>
+          <%= link_to 'Git' %>
+          <%= link_to 'Nginx' %>
+          <%= link_to 'CSS' %>
+          <%= link_to 'WEBセキュリティ' %>
+          <%= link_to 'インフラ' %>
+          <%= link_to 'クラウドサービス' %>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-lg-3">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <center><h2 class="panel-title">Rails</h2></center>
+      </div>
+      <div class="panel-body">
+        <center>
+          <%= link_to "スレッドを作成", "#", class: "btn btn-primary" %>
+        </center>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <center>
+          <h2 class="panel-title">人気ノード</h2>
+        </center>
+      </div>
+      <div class="panel-body node-tags">
+        <label for="" class="label label-default">Rails</label>
+        <label for="" class="label label-default">Ruby</label>
+        <label for="" class="label label-default">Gem</label>
+        <label for="" class="label label-default">入門</label>
+      </div>
+    </div>
+
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <center>
+          <h2 class="panel-title">統計情報</h2>
+        </center>
+      </div>
+      <div class="panel-body">
+        <ul>
+          <li>会員数：5342 人</li>
+          <li>スレッド数：7218 個</li>
+          <li>書き込み数：75977 回</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

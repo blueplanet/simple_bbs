@@ -8,8 +8,11 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 1.2'
 
+gem 'foreman'
 gem 'thin'
 gem 'pg'
+
+gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 group :production do
   gem 'rails_12factor'
