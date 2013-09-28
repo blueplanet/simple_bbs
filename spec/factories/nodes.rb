@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :node do
     sequence(:name) {|n| "node #{n}" }
+    sequence(:description) {|n| "node description #{n}" }
   end
 end

@@ -1,6 +1,8 @@
 SimpleBbs::Application.routes.draw do
 
-  get "topics/index"
+  resources :topics, only: [:show]
+  resources :nodes, only: [:show]
+
   root to: "topics#index"
 
   get "ui/:action" => "ui"
