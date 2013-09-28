@@ -14,6 +14,8 @@ gem 'pg'
 
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
+gem 'kaminari'
+
 group :production do
   gem 'rails_12factor'
 end
