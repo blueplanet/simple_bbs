@@ -2,15 +2,17 @@ defaults: &defaults
   adapter: postgresql
   encoding: unicode
   pool: 5
-  database: simple_bbs_<%= Rails.env %>
   username: postgres
   password:
 
 development:
   <<: *defaults
+  database: simple_bbs_development
 
 test:
   <<: *defaults
+  database: simple_bbs_test
 
 production:
   <<: *defaults
+  database: simple_bbs_production
