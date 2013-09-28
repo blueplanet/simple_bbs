@@ -20,6 +20,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails'
+
+  gem 'factory_girl_rails'
 end
 
 group :development do
@@ -31,6 +33,7 @@ end
 
 group :test do
   gem 'coveralls', require: false
+  gem 'capybara'
 end
 
 group :doc do
