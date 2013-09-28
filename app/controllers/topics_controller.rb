@@ -1,5 +1,5 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.all
+    @topics = Topic.order(:id).page params[:page]
   end
 end
