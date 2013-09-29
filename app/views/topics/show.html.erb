@@ -2,7 +2,7 @@
   <div class="col-lg-12">
     <ul class="breadcrumb">
       <li><a href="#">Home</a></li>
-      <li><a href="#"><%= @topic.node.name %></a></li>
+      <li><%= link_to @topic.node.name, @topic.node %></li>
       <li class="active">スレッド閲覧</li>
     </ul>
   </div>
@@ -36,8 +36,9 @@
       </div>
     </div>
     <div class="panel panel-default">
-      <div class="panel-heading">合計 6 件の書き込み</div>
+      <div class="panel-heading">合計 <%= @topic.replies.count %> 件の書き込み</div>
       <div id="replies">
+        <% @topic.replies.each do |reply| %>
         <div class="reply">
           <div class="pull-left gravatar">
             <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
@@ -55,80 +56,11 @@
               </span>
             </div>
             <div class="body">
-              おお、いいですね！参考になります
+              <%= reply.body %>
             </div>
           </div>
         </div>
-        <div class="reply">
-          <div class="pull-left gravatar">
-            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
-          </div>
-          <div class="infos">
-            <div class="info">
-              <span class="name"><a href="#">jasl</a></span>
-              No.2, 昨日
-              <span class="pull-right">
-                <a href="#">
-                  <i class="icon-thumbs-up-alt"></i>
-                  いいね！
-                </a>
-                <a href="#"><i class="icon-reply"></i></a>
-              </span>
-            </div>
-            <div class="body">
-              便利そうですね。社内も導入しょうかな。。。
-            </div>
-          </div>
-        </div>
-        <div class="reply">
-          <div class="pull-left gravatar">
-            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
-          </div>
-          <div class="infos">
-            <div class="info">
-              <span class="name"><a href="#">ugoa</a></span>
-              No.3, 昨日
-              <span class="pull-right">
-                <a href="#">
-                  <i class="icon-thumbs-up-alt"></i>
-                  いいね！
-                </a>
-                <a href="#"><i class="icon-reply"></i></a>
-              </span>
-            </div>
-            <div class="body">
-              既に導入しています。<br><br>
-              結構便利です。ただし、springなどプリロードを使っている場合、下記のように設定しないとうまくいかない<br>
-              <pre>
-              config.before do
-                FactoryGirl.reload!
-              end
-              </pre>
-            </div>
-          </div>
-        </div>
-        <div class="reply">
-          <div class="pull-left gravatar">
-            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
-          </div>
-          <div class="infos">
-            <div class="info">
-              <span class="name"><a href="#">lgn21st</a></span>
-              No.4, 8時間
-              <span class="pull-right">
-                <a href="#">
-                  <i class="icon-thumbs-up-alt"></i>
-                  いいね！
-                </a>
-                <a href="#"><i class="icon-reply"></i></a>
-              </span>
-            </div>
-            <div class="body">
-              > No.3 <br>
-              素晴らしい！
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
 
