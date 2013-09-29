@@ -13,3 +13,13 @@ notifications:
   hipchat:
     rooms:
       secure: Xa/TyQuyYkWWegiMKUwUTLG+p8HDDLEv4/lAQmq6tp+wG2Rr0rIGotcZuYnytvYdlC5Py+h9RdbAYGwUuAufI5DteJ0o1yEYhoQ8WGQ1kJQmA7VH0rm2/U7eiPkdZXUl/bNhrYx+5pgGbIJJN6f8csUX41/L2gevgALF5uWFRyg=
+deploy:
+  provider: heroku
+  api_key:
+    secure: VTVWhWjCj93Kl0Vz6yT4rdHQGw+/F+MQva3aEKk/JPDejKdzDrgMxj8IDXgb9ShP9pjxxmcL7oBt6cAkWxarO3OfV+ojw56uXDCpYvlwWJDGXBASCHVPiAQRyvXBp78x1aC77aNh8250e/ro8D1OZJ09fN3Ho7gZcZAoyvtDvSw=
+  app: simple-bbs
+  run:
+    - "rake db:migrate"
+    - restart
+  on:
+    repo: blueplanet/simple_bbs
