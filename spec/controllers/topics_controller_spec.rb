@@ -2,14 +2,17 @@ require 'spec_helper'
 
 describe TopicsController do
   describe "GET 'index'" do
-    it "returns http success" do
-      get 'index'
-      response.should be_success
-    end
+    before { get :index }
 
-    it "@topicsが設定さている" do
-      get 'index'
-      expect(assigns(:topics)).to_not be_nil
-    end
+    it { response.should be_success }
+    it { expect(assigns(:topics)).to_not be_nil }
+  end
+
+  describe "GET 'show'" do
+    let!(:topic) { FactoryGirl.create(:topic) }
+    before { get :show, id: topic }
+
+    it { expect(response).to be_success}
+    it { expect(assigns(:topic)).to be_a(Topic) }
   end
 end
