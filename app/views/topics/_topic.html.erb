@@ -1,0 +1,21 @@
+<li class="list-group-item topic-item">
+  <div class="pull-left gravatar">
+    <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
+  </div>
+  <div class="right-info">
+    <span class="pull-right label label-info"><%= topic.replies.count %></span>
+    <div class="infos">
+      <div class="title">
+        <%= link_to topic.title, topic %>
+      </div>
+      <div class="info">
+        <% if show_node %>
+          <%= link_to topic.node.name, topic.node, class: "node" %>
+          ・
+        <% end %>
+        <%= link_to "Yukihiro" %>
+        ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
+      </div>
+    </div>
+  </div>
+</li>

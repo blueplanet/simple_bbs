@@ -16,27 +16,7 @@
         <%= @node.description %>
       </div>
       <ul class="list-group">
-        <% @topics.each do |topic| %>
-        <li class="list-group-item topic-item">
-          <div class="pull-left gravatar">
-            <%= image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png" %>
-          </div>
-          <div class="right_info">
-            <span class="pull-right label label-info">
-              12
-            </span>
-            <div class="infos">
-              <div class="title">
-                <%= link_to topic.title, topic %>
-              </div>
-              <div class="info">
-                <%= link_to "Yukihiro" %>
-                ・最後は、<%= link_to "taro" %>さんが 4 時間前書き込みました
-              </div>
-            </div>
-          </div>
-        </li>
-        <% end %>
+        <%= render partial: 'topics/topic', collection: @topics, locals: {show_node: false} %>
       </ul>
 
       <div class="panel-footer">

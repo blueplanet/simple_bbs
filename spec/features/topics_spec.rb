@@ -20,6 +20,16 @@ feature "ゲストは、すべてのトピックを見たい" do
     end
   end
 
+  scenario 'トピックは、書き込みが多い順でソートされる' do
+    t1 = Topic.all.sample
+    FactoryGirl.create_list(:reply, 20, topic: t1)
+
+    visit root_path
+
+    expect(page).to have_css '#topics li:nth-child(1) .infos .title', text: t1.title
+    expect(page).to have_css '#topics li:nth-child(1) .label-info', text: t1.replies.count
+  end
+
   scenario 'トピックのノードをクリックすると、該当ノード配下のトピック一覧が表示される' do
     node = Topic.first.node
 

@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   def index
-    @topics = Topic.order(:id).page params[:page]
+    @topics = Topic.order("replies_count DESC").page params[:page]
   end
 
   def show
