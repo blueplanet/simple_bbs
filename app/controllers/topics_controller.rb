@@ -5,5 +5,6 @@ class TopicsController < ApplicationController
 
   def show
     @topic = Topic.find params[:id]
+    @last_reply = @topic.replies.last
   end
 end

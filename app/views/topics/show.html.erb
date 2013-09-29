@@ -21,9 +21,11 @@
         </h3>
         <small class="info leader">
           <%= link_to "sakana" %>
-          さん 18 時間前作成しました・最後は
-          <%= link_to "yuiti takana" %>
-          さんが2時間前書き込みました・203回閲覧
+          さん 18 時間前作成しました
+          <% if @last_reply %>
+          ・最後は <%= link_to "yuiti takana" %> さんが <%= time_ago_in_words(@last_reply.created_at) %> 書き込みました
+          <% end %>
+          ・203回閲覧
         </small>
       </div>
       <div class="panel-body">

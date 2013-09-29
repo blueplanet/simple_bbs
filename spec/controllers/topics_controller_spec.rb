@@ -9,10 +9,11 @@ describe TopicsController do
   end
 
   describe "GET 'show'" do
-    let!(:topic) { FactoryGirl.create(:topic) }
+    let!(:topic) { FactoryGirl.create(:topic_with_replies) }
     before { get :show, id: topic }
 
     it { expect(response).to be_success}
     it { expect(assigns(:topic)).to be_a(Topic) }
+    it { expect(assigns(:last_reply)).to be_a(Reply) }
   end
 end
