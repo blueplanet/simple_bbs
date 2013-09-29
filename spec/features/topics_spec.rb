@@ -23,16 +23,11 @@ feature "ゲストは、すべてのトピックを見たい" do
   scenario 'トピックは、書き込みが多い順でソートされる' do
     t1 = Topic.all.sample
     FactoryGirl.create_list(:reply, 20, topic: t1)
-    t2 = Topic.all.sample
-    FactoryGirl.create_list(:reply, 15, topic: t2)
-    t3 = Topic.all.sample
-    FactoryGirl.create_list(:reply, 12, topic: t3)
 
     visit root_path
 
     expect(page).to have_css '#topics li:nth-child(1) .infos .title', text: t1.title
-    expect(page).to have_css '#topics li:nth-child(2) .infos .title', text: t2.title
-    expect(page).to have_css '#topics li:nth-child(3) .infos .title', text: t3.title
+    expect(page).to have_css '#topics li:nth-child(1) .label-info', text: t1.replies.count
   end
 
   scenario 'トピックのノードをクリックすると、該当ノード配下のトピック一覧が表示される' do
