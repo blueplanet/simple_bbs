@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.0.0'
+# ruby '2.0.0'
+
 
 gem 'rails', '4.0.0'
 gem 'sass-rails', '~> 4.0.0'
@@ -32,6 +33,7 @@ group :development do
   gem 'pry-rails'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'growl'
 end
 
 group :test do
