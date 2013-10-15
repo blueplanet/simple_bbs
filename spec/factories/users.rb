@@ -2,8 +2,8 @@
 
 FactoryGirl.define do
   factory :user do
-    sequence(:email) {|n| "test_#{n}@test.com" }
+    email { Faker::Config.locale = :en; Faker::Internet.email }
     password 'testtest'
-    sequence(:name) {|n| "test_#{n}" }
+    name { Faker::Config.locale = :en; Faker::Name.name }
   end
 end
