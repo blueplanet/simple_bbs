@@ -3,9 +3,6 @@ require 'spec_helper'
 feature "ゲストはトピックの詳細を見たい" do
   let!(:topic) { FactoryGirl.create(:topic) }
 
-  background do
-  end
-
   scenario 'トピック一覧でタイトルをクリックすると、トピック詳細ページが表示される' do
     visit root_path
     click_link topic.title
@@ -28,5 +25,9 @@ feature "ゲストはトピックの詳細を見たい" do
     visit topic_path(topic)
 
     expect(page).to have_css "a.topic-user", text: topic.author.name
+
+    click_link topic.author.name
+
+    expect(page.current_path).to eq user_path(topic.author)
   end
 end
