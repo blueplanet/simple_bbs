@@ -20,7 +20,7 @@
           <%= @topic.title %>
         </h3>
         <small class="info leader">
-          <%= link_to "sakana" %>
+          <%= link_to @topic.author.name, @topic.author, class: "topic-user" %>
           さん 18 時間前作成しました
           <% if @last_reply %>
           ・最後は <%= link_to "yuiti takana" %> さんが <%= time_ago_in_words(@last_reply.created_at) %> 書き込みました
