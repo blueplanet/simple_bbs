@@ -1,0 +1,46 @@
+.row
+  .col-lg-12
+    ul.breadcrumb
+      li
+        a[href="/"]
+          | Home
+      li
+        a[href="#"]
+          | ノード
+      li.active
+        = @node.name
+.row
+  .col-lg-9
+    .panel.panel-default
+      .panel-heading
+        h3.node-title
+          = @node.name
+        = @node.description
+      ul.list-group
+        = render partial: 'topics/topic', collection: @topics, locals: {show_node: false}
+      .panel-footer
+        center
+          = paginate @topics
+  .col-lg-3
+    .panel.panel-info
+      .panel-heading
+        center
+          h2.panel-title
+            | Rails
+      .panel-body
+        center
+          = link_to "スレッドを作成", "#", class: "btn btn-primary"
+    .panel.panel-info
+      .panel-heading
+        center
+          h2.panel-title
+            | 人気ノード
+      .panel-body.node-tags
+        label.label.label-default[for=""]
+          | Rails
+        label.label.label-default[for=""]
+          | Ruby
+        label.label.label-default[for=""]
+          | Gem
+        label.label.label-default[for=""]
+          | 入門

@@ -1,0 +1,21 @@
+.row
+  .col-lg-12
+    ul.nav.nav-tabs
+      li.active
+        a[href="#account" data-toggle="tab"]
+          | アカウント情報
+      li
+        a[href="#topics" data-toggle="tab"]
+          | スレッド
+      li
+        a[href="#favorites" data-toggle="tab"]
+          | お気に入り
+.row
+  .col-lg-12
+    .tab-content
+      #account.tab-pane.active
+        = render "account"
+      #topics.tab-pane
+        = render "my_topics"
+      #favorites.tab-pane
+        = render "favorites"
