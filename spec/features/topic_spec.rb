@@ -10,13 +10,24 @@ feature "ゲストはトピックの詳細を見たい" do
     expect(page.current_path).to eq topic_path(topic)
     expect(page).to have_css "h3.topic-title", text: topic.title
     expect(page).to have_css ".panel-body", text: topic.body
+  end
 
+  scenario 'ノードページでタイトルをクリックすると、トピック詳細ページが表示される' do
     visit node_path(topic.node)
-
     click_link topic.title
 
     expect(page.current_path).to eq topic_path(topic)
     expect(page).to have_css "h3.topic-title", text: topic.title
     expect(page).to have_css ".panel-body", text: topic.body
+  end
+
+  scenario 'トピック詳細ページで、トピックを作成したユーザ情報を見える' do
+    visit topic_path(topic)
+
+    expect(page).to have_css "a.topic-user", text: topic.author.name
+
+    click_link topic.author.name
+
+    expect(page.current_path).to eq user_path(topic.author)
   end
 end
