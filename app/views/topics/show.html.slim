@@ -1,0 +1,112 @@
+.row
+  .col-lg-12
+    ul.breadcrumb
+      li
+        a[href="/"]
+          | Home
+      li
+        = link_to @topic.node.name, @topic.node
+      li.active
+        | スレッド閲覧
+.row
+  .col-lg-9
+    .panel.panel-success
+      .panel-heading
+        .pull-right.gravatar
+          = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+        h3.topic-title
+          a[href=""]
+            i.icon-star-empty
+          = @topic.title
+        small.info.leader
+          = link_to @topic.author.name, @topic.author, class: "topic-user"
+          |  さん 18 時間前作成しました 
+          - if @last_reply
+            |  ・最後は 
+            = link_to "yuiti takana"
+            |  さんが 
+            = time_ago_in_words(@last_reply.created_at)
+            |  書き込みました 
+          |  ・203回閲覧 
+      .panel-body
+        p
+          = @topic.body
+        .tools
+          a[href="#"]
+            i.icon-twitter-sign.icon-2x
+          a[href="#"]
+            i.icon-facebook-sign.icon-2x
+          a[href="#"]
+            i.icon-google-plus-sign.icon-2x
+    .panel.panel-default
+      .panel-heading
+        | 合計 
+        = @topic.replies.count
+        |  件の書き込み
+      #replies
+        - @topic.replies.each do |reply|
+          .reply
+            .pull-left.gravatar
+              = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+            .infos
+              .info
+                span.name
+                  a[href="#"]
+                    | lgn21st
+                |  No.1, 昨日 
+                span.pull-right
+                  a[href="#"]
+                    i.icon-thumbs-up-alt
+                    |  いいね！ 
+                  a[href="#"]
+                    i.icon-reply
+              .body
+                = reply.body
+    .panel.panel-default
+      .panel-body
+        .btn-toolbar
+          .btn-group
+            a.btn.btn-default[href="#" disabled]
+              | 編集
+            a.btn.btn-default[href="#"]
+              | プレビュー
+        form#new_reply.form-inline[role="form"]
+          .row
+            .col-lg-10
+              textarea.form-control[name="" rows="4"]
+            .col-lg-2
+              button.btn.btn-primary[type="submit"]
+                | 書き込む
+        b
+          span.help-block
+            | Markdownで編集出来ます。
+  .col-lg-3
+    .panel.panel-info
+      .panel-heading
+        center
+          h2.panel-title
+            | Rails
+      .panel-body
+        center
+          = link_to "スレッドを作成", "#", class: "btn btn-primary"
+    .panel.panel-info
+      .panel-heading
+        center
+          h2.panel-title
+            | ノードのその他スレッド
+      ul.list-group
+        li.list-group-item
+          a[href="#"]
+            | RSpecのエラー
+        li.list-group-item
+          a[href="#"]
+            | MiniTestの環境設定
+        li.list-group-item
+          a[href="#"]
+            | Capybaraのvisit
+        li.list-group-item
+          a[href="#"]
+            | RSpec+Capybaraで簡単なBDD入門
+        li.list-group-item
+          a[href="#"]
+            | オンラインでの「The RSpec Book」読書会を実施したい....
