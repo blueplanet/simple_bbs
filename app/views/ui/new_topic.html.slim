@@ -1,0 +1,41 @@
+.row
+  .col-lg-12
+    ul.breadcrumb
+      li
+        a[href="#"]
+          | Home
+      li
+        a[href="#"]
+          | オープンソース
+      li.active
+        | 新規スレッド
+.row
+  .col-lg-9
+    .panel.panel-default
+      .panel-body
+        form#new_topic.form-horizontal[role="form"]
+          .form-group
+            .col-lg-3
+              select..form-control[for=""]
+                option[value=""]
+                  | Rails
+                option[value=""]
+                  | Gem
+                option[value=""]
+                  | Testing
+            .col-lg-9
+              input.form-control[type="text" placeholder="タイトルを入力してください"]
+          textarea#.form-control[name="" rows="20"]
+          button.btn.btn-primary[type="submit"]
+            | 保存
+          button.btn.btn-info[type="submit"]
+            | プレビュー
+  .col-lg-3.text-center
+    .panel.panel-info
+      .panel-heading
+        | オープンソースプロジェクト
+      .panel-body
+        p
+          | オープンソースプロジェクトをシェアし、設計と使用を議論する
+        a.btn.btn-success[href=""]
+          | スレッドを作成

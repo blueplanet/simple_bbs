@@ -1,0 +1,17 @@
+li.list-group-item.topic-item
+  .pull-left.gravatar
+    = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+  .right-info
+    span.pull-right.label.label-info
+      = topic.replies.count
+    .infos
+      .title
+        = link_to topic.title, topic
+      .info
+        - if show_node
+          = link_to topic.node.name, topic.node, class: "node"
+          |  ・ 
+        = link_to "Yukihiro"
+        |  ・
+        = link_to "taro"
+        | さんが 4 時間前書き込みました 
