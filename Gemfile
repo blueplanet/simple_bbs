@@ -15,9 +15,11 @@ gem 'pg'
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'kaminari'
+gem 'devise'
 
 group :production do
   gem 'rails_12factor'
+  gem 'newrelic_rpm'
 end
 
 group :development, :test do
@@ -32,6 +34,7 @@ group :development do
   gem 'pry-rails'
   gem 'guard-rspec'
   gem 'guard-livereload'
+  gem 'growl'
 end
 
 group :test do

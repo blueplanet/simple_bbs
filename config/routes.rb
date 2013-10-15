@@ -1,4 +1,6 @@
 SimpleBbs::Application.routes.draw do
+  resources :users
+  devise_for :users
 
   resources :topics, only: [:index, :show]
   resources :nodes, only: [:show]
