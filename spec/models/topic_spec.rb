@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Topic do
   it { should belong_to :node }
+  it { should belong_to :author }
   it { should have_many :replies }
 
   describe "#replies_count" do
