@@ -42,6 +42,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'faker'
 end
 
 group :doc do
