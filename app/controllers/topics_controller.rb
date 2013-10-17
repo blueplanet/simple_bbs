@@ -7,4 +7,20 @@ class TopicsController < ApplicationController
     @topic = Topic.find params[:id]
     @last_reply = @topic.replies.last
   end
+
+  def new
+    @topic = Topic.new
+    @nodes = Node.all
+  end
+
+  def create
+    @topic = Topic.new post_params.merge(author: current_user)
+    @topic.save
+    redirect_to @topic
+  end
+
+  private
+    def post_params
+      params.require(:topic).permit(:node_id, :title, :body)
+    end
 end

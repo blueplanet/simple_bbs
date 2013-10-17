@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe TopicsController do
+  let(:user) { FactoryGirl.create(:user) }
+
   describe "GET 'index'" do
     before { get :index }
 
@@ -15,5 +17,21 @@ describe TopicsController do
     it { expect(response).to be_success}
     it { expect(assigns(:topic)).to be_a(Topic) }
     it { expect(assigns(:last_reply)).to be_a(Reply) }
+  end
+
+  describe "GET new" do
+    before { get :new }
+
+    it { expect(response).to be_success }
+    it { expect(assigns(:topic)).to be_a_new(Topic) }
+    it { expect(assigns(:nodes)).to eq Node.all }
+  end
+
+  describe "POST create" do
+    it "topic_pathにリダイレクト" do
+      post :create, {topic: FactoryGirl.attributes_for(:topic) }, {user_id: user}
+
+      expect(response).to redirect_to(topic_path(Topic.last))
+    end
   end
 end

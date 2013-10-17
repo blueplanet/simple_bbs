@@ -1,0 +1,8 @@
+ja:
+  topics:
+    index:
+      new_topic: トピックを作成
+    new:
+      save: 保存
+      preview: プレビュー
+      title_placeholder: タイトルを入力してください
