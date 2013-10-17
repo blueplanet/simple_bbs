@@ -20,7 +20,10 @@ describe TopicsController do
   end
 
   describe "GET new" do
-    before { get :new }
+    before do
+      sign_in user
+      get :new, {}, {user_id: user}
+    end
 
     it { expect(response).to be_success }
     it { expect(assigns(:topic)).to be_a_new(Topic) }
@@ -28,9 +31,12 @@ describe TopicsController do
   end
 
   describe "POST create" do
+    before { sign_in user }
+
     context "正常パラメータの場合" do
       it "topic_pathにリダイレクト" do
-        post :create, {topic: FactoryGirl.attributes_for(:topic) }, {user_id: user}
+
+        post :create, {topic: FactoryGirl.attributes_for(:topic) }
 
         expect(response).to redirect_to(topic_path(Topic.last))
         expect(flash[:notice]).to eq I18n.t('topics.created')

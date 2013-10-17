@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  before_action :authenticate_user!, except: [:show, :index]
+
   def index
     @topics = Topic.order("replies_count DESC").page params[:page]
   end
