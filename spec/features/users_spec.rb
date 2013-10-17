@@ -18,7 +18,7 @@ feature 'ゲストは、サインアップしたい' do
       fill_in "user_password",  with: 'testtest'
       fill_in "user_password_confirmation",  with: 'testtest'
 
-      click_button 'Sign up'
+      click_button 'サインアップ'
     }.to change(User, :count).by(1)
   end
 end
