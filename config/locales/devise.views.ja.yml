@@ -1,8 +1,60 @@
 ja:
+  errors:
+    messages:
+      not_found: "は見つかりませんでした"
+      already_confirmed: "は既に登録済みですのでログインしてください"
+      not_locked: "はロックされていません"
+
   devise:
+    failure:
+      unauthenticated: 'ログインしてください。'
+      unconfirmed: '本登録を行なってください。'
+      locked: 'あなたのアカウントはロックされています。'
+      invalid: 'メールアドレスがパスワードが違います。'
+      invalid_token: '認証キーが不正です。'
+      timeout: 'セッションがタイムアウトしました。もう一度ログインしてください。'
+      inactive: 'アカウントがアクティベートされていません。'
+    sessions:
+      signed_in: 'ログインしました。'
+      signed_out: 'ログアウトしました。'
+      new:
+        sign_in: サインイン
+    passwords:
+      send_instructions: 'パスワードのリセット方法を数分以内にメールでご連絡します。'
+      updated: 'パスワードを変更しました。'
+      new:
+        forgot_your_password: パスワードを忘れましたか?
+        send_me_reset_password_instructions: パスワードの再設定方法を送信する
+      edit:
+        change_your_password: パスワードを変更する
+        new_password: 新しいパスワード
+        confirm_new_password: 新しいパスワード確認
+        change_my_password: パスワード変更
     confirmations:
+      send_instructions: '登録方法を数分以内にメールでご連絡します。'
+      confirmed: 'アカウントを登録しました。'
+      invalid_token: '認証キーが不正です。'
       new:
         resend_confirmation_instructions: アカウント確認メール再送
+    registrations:
+      signed_up: 'アカウント登録を受け付けました。'
+      signed_up_but_unconfirmed: '本人確認用のメールがあなたのEメールアドレスに送られました。メール内のリンクからアカウントを有効化させてください。'
+      updated: 'アカウント情報を変更しました。'
+      destroyed: 'アカウントを削除しました。またのご利用をお待ちしております。'
+      edit:
+        are_you_sure: 本当に良いですか?
+        cancel_my_account: アカウント削除
+        leave_blank_if_you_don_t_want_to_change_it: 変更したくない場合は空のままにしてください
+        title: 編集 %{resource}
+        we_need_your_current_password_to_confirm_your_changes: 変更を確認する為に、今のパスワードが必要です
+        update: 更新
+      new:
+        sign_up: サインアップ
+    unlocks:
+      send_instructions: 'アカウントのロック解除情報を数分以内に メールでご連絡します。'
+      unlocked: 'アカウントをロック解除しました。ログインしています。'
+      new:
+        resend_unlock_instructions: ロック解除指示を再送信
     mailer:
       confirmation_instructions:
         action: アカウント確認
@@ -22,28 +74,6 @@ ja:
         instruction: ! 'アカウントのロックを解除するには下のリンクをクリックしてください。'
         message: ログイン失敗が繰り返されたため、アカウントはロックされています。
         subject: アカウントのロック解除方法
-    passwords:
-      new:
-        forgot_your_password: パスワードを忘れましたか?
-        send_me_reset_password_instructions: パスワードの再設定方法を送信する
-      edit:
-        change_your_password: パスワードを変更する
-        new_password: 新しいパスワード
-        confirm_new_password: 新しいパスワード確認
-        change_my_password: パスワード変更
-    registrations:
-      edit:
-        are_you_sure: 本当に良いですか?
-        cancel_my_account: アカウント削除
-        leave_blank_if_you_don_t_want_to_change_it: 変更したくない場合は空のままにしてください
-        title: 編集 %{resource}
-        we_need_your_current_password_to_confirm_your_changes: 変更を確認する為に、今のパスワードが必要です
-        update: 更新
-      new:
-        sign_up: サインアップ
-    sessions:
-      new:
-        sign_in: サインイン
     shared:
       links:
         didn_t_receive_confirmation_instructions: 没有收到确认指令？
@@ -52,6 +82,3 @@ ja:
         sign_in: サインイン
         sign_in_with_provider: ! '%{provider} でサインイン'
         sign_up: サインアップ
-    unlocks:
-      new:
-        resend_unlock_instructions: ロック解除指示を再送信
