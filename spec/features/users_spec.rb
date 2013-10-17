@@ -22,3 +22,26 @@ feature 'ゲストは、サインアップしたい' do
     }.to change(User, :count).by(1)
   end
 end
+
+feature 'ゲストは、サインアップしたいサインしたい' do
+  given(:user) { FactoryGirl.create(:user) }
+
+  scenario 'サインイン画面でサインイン出来る' do
+    visit root_path
+    expect(page).to have_css 'a', text: 'サインアップ'
+    expect(page).to have_css 'a', text: 'サインイン'
+
+    visit new_user_session_path
+
+    fill_in "user_email",  with: user.email
+    fill_in "user_password",  with: user.password
+
+    click_button 'サインイン'
+
+    expect(page.current_path).to eq root_path
+
+    expect(page).to have_css 'a', text: user.name
+    expect(page).to_not have_css 'a', text: 'サインアップ'
+    expect(page).to_not have_css 'a', text: 'サインイン'
+  end
+end
