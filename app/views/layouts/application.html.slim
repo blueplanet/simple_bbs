@@ -8,11 +8,7 @@ html
     = javascript_include_tag "application"
     = csrf_meta_tags
   body
-    nav.navbar.navbar-inverse.navbar-fixed-top[role="navigation"]
-      .container
-        .navbar-header
-          a.navbar-brand[href="#"]
-            | SimpleBBS
+    = render 'navbar'
     .container
       = render 'notice'
       = render 'alert'

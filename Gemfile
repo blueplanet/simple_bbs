@@ -17,6 +17,7 @@ gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'
 
 gem 'kaminari'
 gem 'devise'
+gem 'devise-i18n-views'
 
 group :production do
   gem 'rails_12factor'
