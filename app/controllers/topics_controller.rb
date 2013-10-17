@@ -15,8 +15,11 @@ class TopicsController < ApplicationController
 
   def create
     @topic = Topic.new post_params.merge(author: current_user)
-    @topic.save
-    redirect_to @topic
+    if @topic.save
+      redirect_to @topic, notice: t('topics.created')
+    else
+      render :new
+    end
   end
 
   private

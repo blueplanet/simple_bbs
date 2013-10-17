@@ -28,10 +28,20 @@ describe TopicsController do
   end
 
   describe "POST create" do
-    it "topic_pathにリダイレクト" do
-      post :create, {topic: FactoryGirl.attributes_for(:topic) }, {user_id: user}
+    context "正常パラメータの場合" do
+      it "topic_pathにリダイレクト" do
+        post :create, {topic: FactoryGirl.attributes_for(:topic) }, {user_id: user}
 
-      expect(response).to redirect_to(topic_path(Topic.last))
+        expect(response).to redirect_to(topic_path(Topic.last))
+        expect(flash[:notice]).to eq I18n.t('topics.created')
+      end
+    end
+
+    context "異常パラメータの場合" do
+      it "topic_pathにリダイレクトされない" do
+        post :create, {topic: FactoryGirl.attributes_for(:topic, title: nil) }, {user_id: user} 
+        expect(response).to_not redirect_to topic_path(Topic.last)
+      end
     end
   end
 end

@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:title) {|n| "topic title #{n}" }
     sequence(:body) {|n| "topic body .... #{n}"}
 
-    node { FactoryGirl.create(:node) }
+    node_id { FactoryGirl.create(:node).id }
     author { FactoryGirl.create(:user) }
 
     factory :topic_with_replies do
