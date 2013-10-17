@@ -43,5 +43,6 @@ feature 'ゲストは、サインアップしたいサインしたい' do
     expect(page).to have_css 'a', text: user.name
     expect(page).to_not have_css 'a', text: 'サインアップ'
     expect(page).to_not have_css 'a', text: 'サインイン'
+    expect(page).to have_css 'a', text: 'サインアウト'
   end
 end
