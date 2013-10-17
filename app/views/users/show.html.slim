@@ -1,193 +1,21 @@
 .row
   .col-lg-12
-    ul.breadcrumb
-      li
-        a[href="#"]
-          | Home
-      li
-        a[href="#"]
-          | Testing
+    ul.nav.nav-tabs
       li.active
-        | スレッド閲覧
-.row
-  .col-lg-9
-    .panel.panel-success
-      .panel-heading
-        .pull-right.gravatar
-          = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-        h3.topic-title
-          a[href=""]
-            i.icon-star-empty
-          |  FactoryGirlの使い方メモ 
-        small.info.leader
-          = link_to "sakana"
-          |  さん 18 時間前作成しました・最後は 
-          = link_to "yuiti takana"
-          |  さんが2時間前書き込みました・203回閲覧 
-      .panel-body
-        h2
-          | model定義
-        pre
-          code
-            | class Group < ActiveRecord::Base has_many :events has_many :members end 
-        pre
-          code
-            | class Event < ActiveRecord::Base has_many :groups end 
-        h2
-          | has_manyの定義方法
-        pre
-          code
-            | FactoryGirl.define do factory ....
-        h2
-          | 重複を除く為のparent
-        ul
-          li
-            | 「
-            code
-              | parent: :seq_group
-            | 」を使ったのですが、もっと便利な書き方があります。
-          li
-            | ネストして定義しちゃえば、継承出来ます
-        pre
-          code
-            | FactoryGirl.define do factory ...
-        h2
-          | 配列・リストの作り方
-        pre
-          code
-            | FactoryGirl.define do factory :group_event, ...
-        .tools
-          a[href="#"]
-            i.icon-twitter-sign.icon-2x
-          a[href="#"]
-            i.icon-facebook-sign.icon-2x
-          a[href="#"]
-            i.icon-google-plus-sign.icon-2x
-    .panel.panel-default
-      .panel-heading
-        | 合計 6 件の書き込み
-      #replies
-        .reply
-          .pull-left.gravatar
-            = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-          .infos
-            .info
-              span.name
-                a[href="#"]
-                  | lgn21st
-              |  No.1, 昨日 
-              span.pull-right
-                a[href="#"]
-                  i.icon-thumbs-up-alt
-                  |  いいね！ 
-                a[href="#"]
-                  i.icon-reply
-            .body
-              |  おお、いいですね！参考になります 
-        .reply
-          .pull-left.gravatar
-            = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-          .infos
-            .info
-              span.name
-                a[href="#"]
-                  | jasl
-              |  No.2, 昨日 
-              span.pull-right
-                a[href="#"]
-                  i.icon-thumbs-up-alt
-                  |  いいね！ 
-                a[href="#"]
-                  i.icon-reply
-            .body
-              |  便利そうですね。社内も導入しょうかな。。。 
-        .reply
-          .pull-left.gravatar
-            = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-          .infos
-            .info
-              span.name
-                a[href="#"]
-                  | ugoa
-              |  No.3, 昨日 
-              span.pull-right
-                a[href="#"]
-                  i.icon-thumbs-up-alt
-                  |  いいね！ 
-                a[href="#"]
-                  i.icon-reply
-            .body
-              |  既に導入しています。
-              br
-              br
-              |  結構便利です。ただし、springなどプリロードを使っている場合、下記のように設定しないとうまくいかない
-              br
-              pre
-                |  config.before do FactoryGirl.reload! end 
-        .reply
-          .pull-left.gravatar
-            = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-          .infos
-            .info
-              span.name
-                a[href="#"]
-                  | lgn21st
-              |  No.4, 8時間 
-              span.pull-right
-                a[href="#"]
-                  i.icon-thumbs-up-alt
-                  |  いいね！ 
-                a[href="#"]
-                  i.icon-reply
-            .body
-              |  > No.3 
-              br
-              |  素晴らしい！ 
-    .panel.panel-default
-      .panel-body
-        .btn-toolbar
-          .btn-group
-            a.btn.btn-default[href="#" disabled]
-              | 編集
-            a.btn.btn-default[href="#"]
-              | プレビュー
-        form#new_reply.form-inline[role="form"]
-          .row
-            .col-lg-10
-              textarea.form-control[name="" rows="4"]
-            .col-lg-2
-              button.btn.btn-primary[type="submit"]
-                | 書き込む
-        b
-          span.help-block
-            | Markdownで編集出来ます。
-  .col-lg-3
-    .panel.panel-info
-      .panel-heading
-        center
-          h2.panel-title
-            | Rails
-      .panel-body
-        center
-          = link_to "スレッドを作成", "#", class: "btn btn-primary"
-    .panel.panel-info
-      .panel-heading
-        center
-          h2.panel-title
-            | ノードのその他スレッド
-      ul.list-group
-        li.list-group-item
-          a[href="#"]
-            | RSpecのエラー
-        li.list-group-item
-          a[href="#"]
-            | MiniTestの環境設定
-        li.list-group-item
-          a[href="#"]
-            | Capybaraのvisit
-        li.list-group-item
-          a[href="#"]
-            | RSpec+Capybaraで簡単なBDD入門
-        li.list-group-item
-          a[href="#"]
-            | オンラインでの「The RSpec Book」読書会を実施したい....
+        a[href="#account" data-toggle="tab"]
+          | アカウント情報
+      li
+        a[href="#topics" data-toggle="tab"]
+          | スレッド
+      li
+        a[href="#favorites" data-toggle="tab"]
+          | お気に入り
+/ .row
+/   .col-lg-12
+/     .tab-content
+/       #account.tab-pane.active
+/         = render "account"
+/       #topics.tab-pane
+/         = render "my_topics"
+/       #favorites.tab-pane
+/         = render "favorites"
