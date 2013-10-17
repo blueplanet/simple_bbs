@@ -1,18 +1,19 @@
-h2
-  = t('.sign_in', :default => "Sign in")
-= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-  div
-    = f.label :email
-    br
-    = f.email_field :email
-  div
-    = f.label :password
-    br
-    = f.password_field :password
-  - if devise_mapping.rememberable?
-    div
-      = f.check_box :remember_me
-      = f.label :remember_me
-  div
-    = f.submit t('.sign_in', :default => "Sign in")
-= render "devise/shared/links"
+.row
+  .col-lg-6.col-lg-offset-3
+    .panel.panel-success
+      .panel-heading
+        .panel-title.text-center= t('.sign_in', :default => "Sign in")
+      .panel-body
+        = form_for(resource, :as => resource_name, :url => session_path(resource_name), html: {class: 'form-horizontal'}) do |f|
+          = devise_error_messages!
+          .form-group
+            = f.label :email, class: 'col-lg-3 control-label'
+            .col-lg-9
+              = f.email_field :email, class: 'form-control'
+          .form-group
+            = f.label :password, class: 'col-lg-3 control-label'
+            .col-lg-9
+              = f.password_field :password, class: 'form-control'
+          .form-group
+            .col-lg-9.col-lg-offset-3
+              = f.submit t('.sign_in', :default => "Sign in"), class: 'btn btn-primary'
