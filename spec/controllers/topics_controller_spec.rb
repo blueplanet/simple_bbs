@@ -30,6 +30,18 @@ describe TopicsController do
     it { expect(assigns(:nodes)).to eq Node.all }
   end
 
+  describe "GET edit" do
+    let(:topic) { FactoryGirl.create(:topic) }
+
+    before do
+      sign_in user
+      get :edit, {id: topic}, {user_id: user}
+    end
+
+    it { expect(response).to be_success }
+    it { expect(assigns(:topic)).to be_a(Topic)}
+  end
+
   describe "POST create" do
     before { sign_in user }
 

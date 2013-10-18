@@ -11,7 +11,13 @@ feature 'ユーザは、自分のトピックを編集したい' do
     expect(page).to have_css 'h3 a', text: '編集'
   end
 
-  scenario '編集リンクをクリックすると、編集ページに遷移される'
+  scenario '編集リンクをクリックすると、編集ページに遷移される' do
+    visit topic_path(topic)
+
+    first(:link, '編集').click
+
+    expect(page.current_path).to eq edit_topic_path(topic)
+  end
 
   scenario '編集ページで、タイトルまたは内容を修正し、保存ボタンをクリックすると、保存される'
 end

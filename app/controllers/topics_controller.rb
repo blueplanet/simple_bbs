@@ -1,18 +1,18 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_topic, only: [:show, :edit]
+  before_action :set_nodes, only: [:new, :edit]
 
   def index
     @topics = Topic.order("replies_count DESC").page params[:page]
   end
 
   def show
-    @topic = Topic.find params[:id]
     @last_reply = @topic.replies.last
   end
 
   def new
     @topic = Topic.new
-    @nodes = Node.all
   end
 
   def create
@@ -25,6 +25,14 @@ class TopicsController < ApplicationController
   end
 
   private
+    def set_topic
+      @topic = Topic.find params[:id]
+    end
+
+    def set_nodes
+      @nodes = Node.all
+    end
+
     def post_params
       params.require(:topic).permit(:node_id, :title, :body)
     end
