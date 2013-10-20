@@ -1,6 +1,6 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_topic, only: [:show, :edit]
+  before_action :set_topic, only: [:show, :edit, :update]
   before_action :set_nodes, only: [:new, :edit]
 
   def index
@@ -18,9 +18,17 @@ class TopicsController < ApplicationController
   def create
     @topic = Topic.new post_params.merge(author: current_user)
     if @topic.save
-      redirect_to @topic, notice: t('topics.created')
+      redirect_to @topic, notice: t('topics.notices.created')
     else
       render :new
+    end
+  end
+
+  def update
+    if @topic.update post_params
+      redirect_to @topic, notice: t('topics.notices.updated')
+    else
+      render :edit
     end
   end
 

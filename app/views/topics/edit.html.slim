@@ -11,18 +11,7 @@
         | スレッド編集
 .row
   .col-lg-9
-    .panel.panel-default
-      .panel-body
-        = form_for @topic, html: { class: "form-horizontal" } do |f|
-          .form-group
-            .col-lg-3
-              = f.collection_select :node_id, @nodes, :id, :name, {}, {class: 'form-control' }
-            .col-lg-9
-              = f.text_field :title, placeholder: t('.title_placeholder', default: 'Please input title'), class: 'form-control'
-          = f.text_area :body, { class: 'form-control', rows: 20 }
-          .form-gorup
-            = f.submit t('.save', defalut: 'Create'), class: 'btn btn-primary'
-            = link_to t('.preview'), "", class: 'btn'
+    = render "form"
   .col-lg-3.text-center
     .panel.panel-info
       .panel-heading
