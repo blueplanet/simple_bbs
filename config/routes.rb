@@ -2,7 +2,9 @@ SimpleBbs::Application.routes.draw do
   devise_for :users
 
   resources :users, only: [:show]
-  resources :topics, only: [:index, :show, :new, :create, :edit, :update]
+  resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :replies, only: [:create, :edit, :update, :destroy]
+  end
   resources :nodes, only: [:show]
 
   root to: "topics#index"

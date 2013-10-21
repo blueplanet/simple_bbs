@@ -53,10 +53,12 @@
             .infos
               .info
                 span.name
-                  a[href="#"]
-                    | lgn21st
+                  = link_to reply.anthor.name, reply.anthor
                 |  No.1, 昨日 
                 span.pull-right
+                  - if reply.anthor == current_user
+                    = link_to t('.edit'), edit_topic_reply_path(@topic, reply)
+                  '
                   a[href="#"]
                     i.icon-thumbs-up-alt
                     |  いいね！ 
@@ -72,13 +74,12 @@
               | 編集
             a.btn.btn-default[href="#"]
               | プレビュー
-        form#new_reply.form-inline[role="form"]
+        = form_for [@topic, @topic.replies.build], html: {class: "reply-form"} do |f|
           .row
             .col-lg-10
-              textarea.form-control[name="" rows="4"]
+              = f.text_area :body, class: "form-control", rows: "4"
             .col-lg-2
-              button.btn.btn-primary[type="submit"]
-                | 書き込む
+              = f.submit t('.create_reply'), class: 'btn btn-primary'
         b
           span.help-block
             | Markdownで編集出来ます。
