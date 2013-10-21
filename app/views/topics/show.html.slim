@@ -17,6 +17,8 @@
         h3.topic-title
           a[href=""]
             i.icon-star-empty
+          = link_to t('.edit'), edit_topic_path(@topic)
+          '
           = @topic.title
         small.info.leader
           = link_to @topic.author.name, @topic.author, class: "topic-user"
@@ -88,7 +90,7 @@
             | Rails
       .panel-body
         center
-          = link_to "スレッドを作成", "#", class: "btn btn-primary"
+          = link_to "スレッドを作成", new_topic_path, class: "btn btn-primary"
     .panel.panel-info
       .panel-heading
         center

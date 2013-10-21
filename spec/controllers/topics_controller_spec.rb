@@ -30,24 +30,55 @@ describe TopicsController do
     it { expect(assigns(:nodes)).to eq Node.all }
   end
 
+  describe "GET edit" do
+    let(:topic) { FactoryGirl.create(:topic) }
+
+    before do
+      sign_in user
+      get :edit, {id: topic}, {user_id: user}
+    end
+
+    it { expect(response).to be_success }
+    it { expect(assigns(:topic)).to be_a(Topic)}
+  end
+
   describe "POST create" do
     before { sign_in user }
 
     context "正常パラメータの場合" do
       it "topic_pathにリダイレクト" do
-
         post :create, {topic: FactoryGirl.attributes_for(:topic) }
 
         expect(response).to redirect_to(topic_path(Topic.last))
-        expect(flash[:notice]).to eq I18n.t('topics.created')
+        expect(flash[:notice]).to eq I18n.t('topics.notices.created')
       end
     end
 
     context "異常パラメータの場合" do
       it "topic_pathにリダイレクトされない" do
-        post :create, {topic: FactoryGirl.attributes_for(:topic, title: nil) }, {user_id: user} 
+        post :create, {topic: FactoryGirl.attributes_for(:topic, title: nil) }
+
         expect(response).to_not redirect_to topic_path(Topic.last)
       end
+    end
+  end
+
+  describe "PUT update" do
+    let(:topic) { FactoryGirl.create(:topic) }
+    before { sign_in user }
+
+    context '正常パラメータの場合' do
+      before { put :update, {topic: {title: Faker::Lorem.sentence}, id: topic} }
+
+      it { expect(response).to redirect_to topic_path(topic) }
+      it { expect(flash[:notice]).to eq I18n.t('topics.notices.updated') }
+    end
+
+    context '異常パラメータの場合' do
+      before { put :update, {topic: {title: nil}, id: topic} }
+
+      it { expect(response).to render_template(:edit) }
+      it { expect(response).to_not redirect_to(topic_path(topic))}
     end
   end
 end
