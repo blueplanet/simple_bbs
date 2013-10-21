@@ -72,13 +72,12 @@
               | 編集
             a.btn.btn-default[href="#"]
               | プレビュー
-        form#new_reply.form-inline[role="form"]
+        = form_for [@topic, @topic.replies.build] do |f|
           .row
             .col-lg-10
-              textarea.form-control[name="" rows="4"]
+              = f.text_area :body, class: "form-control", rows: "4"
             .col-lg-2
-              button.btn.btn-primary[type="submit"]
-                | 書き込む
+              = f.submit t('.create_reply'), class: 'btn btn-primary'
         b
           span.help-block
             | Markdownで編集出来ます。

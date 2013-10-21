@@ -11,5 +11,6 @@ ja:
       title_placeholder: タイトルを入力してください
     show:
       edit: 編集
+      create_reply: 書き込む
     form:
       save: 保存

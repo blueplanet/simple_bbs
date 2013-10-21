@@ -22,5 +22,22 @@ feature 'ゲストは、トピックの書き込みを見たい' do
       expect(page).to have_css ".info.leader", text: "さんが #{time_ago_in_words(last_reply.created_at)} 書き込みました"
     end
   end
+end
 
+feature 'ユーザは、トピックに対して書き込みしたい' do
+  include_context 'login'
+  let(:topic) { FactoryGirl.create(:topic_with_replies) }
+  before { visit topic_path(topic) }
+
+  scenario 'トピックページに書き込みフォームが表示される' do
+    expect(page).to have_css "form#new_reply"
+  end
+
+  scenario '書き込みフォームに内容を入力し、送信ボタンをクリックすると、書き込みが追加される'
+
+  context '自分の書き込みの場合' do
+    scenario '編集ボタンをクリックすると、書き込みページに遷移される'
+    scenario '内容を修正し、保存ボタンを押すと、編集が保存される'
+    scenario '削除ボタンをクリックすると、書き込みが削除される'
+  end
 end
