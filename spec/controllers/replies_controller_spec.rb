@@ -69,4 +69,25 @@ describe RepliesController do
       end
     end
   end
+
+  describe "DELETE destroy" do
+    let(:reply) { FactoryGirl.create(:reply, topic: topic) }
+
+    context "正常のパラメータの場合" do
+      before { delete :destroy, {topic_id: topic, id: reply} }
+
+      it "トピックへリダイレクトされる" do
+        expect(response).to redirect_to topic
+      end
+
+      it { expect(flash[:notice]).to eq I18n.t('replies.notices.deleted') }
+    end
+
+    context "異常のパラメータの場合" do
+      before { delete :destroy, {topic_id: topic, id: 'aabbcc'} }
+
+      it { expect(response).to redirect_to topic }
+      it { expect(flash[:alert]).to eq I18n.t('replies.alerts.not_found') }
+    end
+  end
 end

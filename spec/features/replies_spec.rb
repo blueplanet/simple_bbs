@@ -52,6 +52,8 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
       body = Faker::Lorem.paragraph
       fill_in "reply_body",  with: body
       click_button '書き込む'
+
+      topic.reload
     end
 
     scenario '編集ボタンが表示される' do
@@ -83,6 +85,16 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
 
         expect(page.current_path).to eq topic_path(topic)
         expect(page).to have_css '.reply .body', text: new_body
+      end
+
+      scenario '削除ボタンをクリックすると、書き込みが削除される' do
+        body = topic.replies.last.body
+
+        click_link '削除'
+
+        expect(page.current_path).to eq topic_path(topic)
+        expect(page).to have_content I18n.t('replies.notices.deleted')
+        expect(page).to_not have_content body
       end
     end
   end

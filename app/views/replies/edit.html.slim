@@ -23,3 +23,4 @@
             = f.text_area :body, class: "form-control", rows: "20"
           .form-group
             = f.submit t('.save'), class: 'btn btn-primary'
+            = link_to t('.delete'), topic_reply_path(@topic, @reply), method: :delete, class: 'btn btn-danger', data: { confirm: t('replies.confirm.do_delete')}

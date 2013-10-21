@@ -1,6 +1,6 @@
 class RepliesController < ApplicationController
-  before_action :set_topic, only: [:edit, :update, :create]
-  before_action :set_reply, only: [:edit, :update]
+  before_action :set_topic, only: [:edit, :update, :create, :destroy]
+  before_action :set_reply, only: [:edit, :update, :destroy]
 
   def create
     reply = @topic.replies.build reply_params
@@ -21,6 +21,11 @@ class RepliesController < ApplicationController
     end
   end
 
+  def destroy
+    @topic.replies.delete(@reply)
+    redirect_to @topic, notice: t('replies.notices.deleted')
+  end
+
   private
     def set_topic
       @topic = Topic.where(id: params[:topic_id]).first
@@ -29,7 +34,7 @@ class RepliesController < ApplicationController
 
     def set_reply
       @reply = Reply.where(id: params[:id]).first
-      redirect_to @topic unless @reply
+      redirect_to @topic, alert: t('replies.alerts.not_found') unless @reply
     end
 
     def reply_params

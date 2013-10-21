@@ -1,8 +1,13 @@
 ja:
   replies:
+    confirm:
+      do_delete: 本当に削除しますか？
     notices:
       created: 書き込みを追加しました。
       updated: 書き込みを更新しました。
+      deleted: 書き込みを削除しました。
+    alerts:
+      not_found: 書き込みを見つかりませんでした。
     edit:
       save: 保存
       delete: 削除
