@@ -53,10 +53,12 @@
             .infos
               .info
                 span.name
-                  a[href="#"]
-                    | lgn21st
+                  = link_to reply.anthor.name, reply.anthor
                 |  No.1, 昨日 
                 span.pull-right
+                  - if reply.anthor == current_user
+                    = link_to t('.edit'), edit_topic_reply_path(@topic, reply)
+                  '
                   a[href="#"]
                     i.icon-thumbs-up-alt
                     |  いいね！ 

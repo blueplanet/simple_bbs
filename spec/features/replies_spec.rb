@@ -39,14 +39,24 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
     click_button '書き込む'
 
     expect(page.current_path).to eq topic_path(topic)
-    expect(page).to have_css "#replies .reply .body", text: body
     expect(page).to have_content I18n.t('replies.notices.created')
+
+    within "#replies .reply:last-child" do
+      expect(page).to have_css "span.name", text: user.name
+      expect(page).to have_css ".body", text: body
+    end
   end
 
   context '自分の書き込みの場合' do
+    background do
+      body = Faker::Lorem.paragraph
+      fill_in "reply_body",  with: body
+      click_button '書き込む'
+    end
+
     scenario '編集ボタンが表示される' do
       within("#replies .reply:last-child") do
-        expect(page).to have_css ".info a", text: '編集'
+       expect(page).to have_css ".info a", text: '編集'
       end
     end
 

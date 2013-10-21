@@ -3,7 +3,7 @@ SimpleBbs::Application.routes.draw do
 
   resources :users, only: [:show]
   resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
-    resources :replies, only: [:create]
+    resources :replies, only: [:create, :edit, :update]
   end
   resources :nodes, only: [:show]
 
