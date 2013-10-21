@@ -44,6 +44,12 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
   end
 
   context '自分の書き込みの場合' do
+    scenario '編集ボタンが表示される' do
+      within("#replies .reply:last-child") do
+        expect(page).to have_css ".info a", text: '編集'
+      end
+    end
+
     scenario '編集ボタンをクリックすると、書き込みページに遷移される'
     scenario '内容を修正し、保存ボタンを押すと、編集が保存される'
     scenario '削除ボタンをクリックすると、書き込みが削除される'
