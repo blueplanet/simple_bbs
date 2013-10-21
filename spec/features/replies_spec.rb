@@ -33,7 +33,15 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
     expect(page).to have_css "form#new_reply"
   end
 
-  scenario '書き込みフォームに内容を入力し、送信ボタンをクリックすると、書き込みが追加される'
+  scenario '書き込みフォームに内容を入力し、書き込むボタンをクリックすると、書き込みが追加される' do
+    body = Faker::Lorem.paragraph
+    fill_in "reply_body",  with: body
+    click_button '書き込む'
+
+    expect(page.current_path).to eq topic_path(topic)
+    expect(page).to have_css "#replies .reply .body", text: body
+    expect(page).to have_content I18n.t('replies.notices.created')
+  end
 
   context '自分の書き込みの場合' do
     scenario '編集ボタンをクリックすると、書き込みページに遷移される'
