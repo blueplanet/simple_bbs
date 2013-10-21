@@ -2,3 +2,7 @@ ja:
   replies:
     notices:
       created: 書き込みを追加しました。
+      updated: 書き込みを更新しました。
+    edit:
+      save: 保存
+      delete: 削除

@@ -1,0 +1,25 @@
+.row
+  .col-lg-12
+    ul.breadcrumb
+      li
+        = link_to 'Home', root_path
+      li
+        = link_to @topic.node.name, @topic.node
+      li.active
+        | 書き込み編集
+
+.row
+  .col-lg-10
+    .panel.panel-default
+      .panel-body
+        .btn-toolbar
+          .btn-group
+            a.btn.btn-default[href="#" disabled]
+              | 編集
+            a.btn.btn-default[href="#"]
+              | プレビュー
+        = form_for [@topic, @reply], html: {class: "reply-form"} do |f|
+          .form-group
+            = f.text_area :body, class: "form-control", rows: "20"
+          .form-group
+            = f.submit t('.save'), class: 'btn btn-primary'

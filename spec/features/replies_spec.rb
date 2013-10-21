@@ -56,12 +56,34 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
 
     scenario '編集ボタンが表示される' do
       within("#replies .reply:last-child") do
-       expect(page).to have_css ".info a", text: '編集'
+        expect(page).to have_css ".info a", text: '編集'
       end
     end
 
-    scenario '編集ボタンをクリックすると、書き込みページに遷移される'
-    scenario '内容を修正し、保存ボタンを押すと、編集が保存される'
-    scenario '削除ボタンをクリックすると、書き込みが削除される'
+    scenario '編集ボタンをクリックすると、書き込みページに遷移される' do
+      within("#replies .reply:last-child") do
+        find(:link, '編集').click
+      end
+
+      expect(page.current_path).to eq edit_topic_reply_path(topic, topic.reload.replies.last)
+      expect(page).to have_css "form", text: topic.replies.last.body
+    end
+
+    context "書き込み編集ページで" do
+      background do
+        within("#replies .reply:last-child") do
+          find(:link, '編集').click
+        end
+      end
+
+      scenario '内容を修正し、保存ボタンを押すと、編集が保存される' do
+        new_body = Faker::Lorem.paragraph
+        fill_in "reply_body",  with: new_body
+        click_button '保存'
+
+        expect(page.current_path).to eq topic_path(topic)
+        expect(page).to have_css '.reply .body', text: new_body
+      end
+    end
   end
 end

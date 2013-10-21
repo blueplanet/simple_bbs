@@ -74,7 +74,7 @@
               | 編集
             a.btn.btn-default[href="#"]
               | プレビュー
-        = form_for [@topic, @topic.replies.build] do |f|
+        = form_for [@topic, @topic.replies.build], html: {class: "reply-form"} do |f|
           .row
             .col-lg-10
               = f.text_area :body, class: "form-control", rows: "4"
