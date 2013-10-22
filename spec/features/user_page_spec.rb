@@ -23,8 +23,7 @@ feature 'ユーザは、自分の情報を確認したい' do
   context "#replies" do
     background do
       5.times do
-        topic = FactoryGirl.create(:topic)
-        FactoryGirl.create(:reply, topic: topic)
+        FactoryGirl.create(:reply)
       end
 
       visit user_path(user.reload)

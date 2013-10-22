@@ -94,42 +94,8 @@
   .panel-heading
     | 最近の書き込み
   ul.list-group
-    li.list-group-item
-      a[href="#"]
-        | 使用 RSpec 测试 Rails 程序
-      span
-        | at 15 日前
-      p
-        |  简单看了下样书，觉得写的很用心。内容正好是最近关注的RSpec + Rails 4.0。
-        br
-        |  双倍支持！！！:+1::+1: 
-    li.list-group-item
-      a[href="#"]
-        | 使用 RSpec+Capybara 简单BDD入门 -1 
-      span
-        | at 2ヶ月前
-      p
-        |  #2楼 @gelihai1991 貌似你并没有执行测试吧？显示是
-        br
-      pre
-        |  No examples found. 0 examples, 0 failures 
-    li.list-group-item
-      a[href="#"]
-        | 使用 RSpec+Capybara 简单BDD入门 -1 
-      span
-        | at 2ヶ月前
-      p
-        |  #2楼 @gelihai1991 貌似你并没有执行测试吧？显示是
-        br
-      pre
-        |  No examples found. 0 examples, 0 failures 
-    li.list-group-item
-      a[href="#"]
-        | 使用 RSpec+Capybara 简单BDD入门 -1 
-      span
-        | at 2ヶ月前
-      p
-        |  #2楼 @gelihai1991 貌似你并没有执行测试吧？显示是
-        br
-      pre
-        |  No examples found. 0 examples, 0 failures 
+    - @replies.each do |reply|
+      li.list-group-item
+        = link_to reply.topic.title, reply.topic
+        span= " #{time_ago_in_words(reply.created_at)}"
+        p= reply.body
