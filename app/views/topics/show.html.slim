@@ -60,7 +60,7 @@
             .col-lg-10
               = f.text_area :body, class: "form-control", rows: "4"
             .col-lg-2
-              = f.submit t('.create_reply'), class: 'btn btn-primary'
+              = f.submit t('.create_reply'), class: 'btn btn-primary', data: {disable_with: t('.sending')}
         b
           span.help-block
             | Markdownで編集出来ます。

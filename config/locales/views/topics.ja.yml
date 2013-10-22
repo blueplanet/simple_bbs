@@ -12,5 +12,6 @@ ja:
     show:
       edit: 編集
       create_reply: 書き込む
+      sending: 送信中
     form:
       save: 保存
