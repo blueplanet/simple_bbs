@@ -99,3 +99,7 @@
         = link_to reply.topic.title, reply.topic
         span= " #{time_ago_in_words(reply.created_at)}"
         p= reply.body
+
+  .panel-footer
+    center
+      = paginate @replies
