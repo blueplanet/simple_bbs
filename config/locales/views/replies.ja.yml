@@ -1,5 +1,8 @@
 ja:
   replies:
+    reply:
+      edit: 編集
+      ago_replied: 前
     confirm:
       do_delete: 本当に削除しますか？
     notices:

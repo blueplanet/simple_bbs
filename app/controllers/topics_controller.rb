@@ -9,6 +9,7 @@ class TopicsController < ApplicationController
 
   def show
     @last_reply = @topic.replies.last
+    @replies = @topic.replies.page params[:page]
   end
 
   def new

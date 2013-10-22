@@ -3,13 +3,17 @@ class RepliesController < ApplicationController
   before_action :set_reply, only: [:edit, :update, :destroy]
 
   def create
-    reply = @topic.replies.build reply_params
-    reply.anthor = current_user
+    @reply = @topic.replies.build reply_params
+    @reply.anthor = current_user
 
-    if reply.save
-      redirect_to @topic, notice: t('replies.notices.created')
-    else
-      redirect_to @topic
+    respond_to do |format|
+      if @reply.save
+        format.html { redirect_to @topic, notice: t('replies.notices.created') }
+        format.js
+      else
+        format.html { redirect_to @topic }
+        format.js { render json: @reply.errors, status: :unprocessable_entity }
+      end
     end
   end
 

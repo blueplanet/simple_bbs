@@ -41,31 +41,12 @@
           a[href="#"]
             i.icon-google-plus-sign.icon-2x
     .panel.panel-default
-      .panel-heading
-        | 合計 
-        = @topic.replies.count
-        |  件の書き込み
+      .panel-heading= "合計 #{@topic.replies.count} 件の書き込み"
       #replies
-        - @topic.replies.each do |reply|
-          .reply
-            .pull-left.gravatar
-              = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
-            .infos
-              .info
-                span.name
-                  = link_to reply.anthor.name, reply.anthor
-                |  No.1, 昨日 
-                span.pull-right
-                  - if reply.anthor == current_user
-                    = link_to t('.edit'), edit_topic_reply_path(@topic, reply)
-                  '
-                  a[href="#"]
-                    i.icon-thumbs-up-alt
-                    |  いいね！ 
-                  a[href="#"]
-                    i.icon-reply
-              .body
-                = reply.body
+        = render partial: "replies/reply", collection: @replies, locals: {topic: @topic, user: current_user}
+      .panel-footer
+        center
+          = paginate @replies
     .panel.panel-default
       .panel-body
         .btn-toolbar
@@ -74,7 +55,7 @@
               | 編集
             a.btn.btn-default[href="#"]
               | プレビュー
-        = form_for [@topic, @topic.replies.build], html: {class: "reply-form"} do |f|
+        = form_for [@topic, @topic.replies.build], html: {class: "reply-form"}, remote: true do |f|
           .row
             .col-lg-10
               = f.text_area :body, class: "form-control", rows: "4"

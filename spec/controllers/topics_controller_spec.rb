@@ -16,6 +16,7 @@ describe TopicsController do
 
     it { expect(response).to be_success}
     it { expect(assigns(:topic)).to be_a(Topic) }
+    it { expect(assigns(:replies)).to eq topic.replies.page 1 }
     it { expect(assigns(:last_reply)).to be_a(Reply) }
   end
 
