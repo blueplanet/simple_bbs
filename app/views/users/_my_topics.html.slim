@@ -1,0 +1,7 @@
+table.table.table-striped[width="100%"]
+  - @user.topics.each do |topic|
+    tr
+      td[width="10%"]= link_to topic.node.name, topic.node
+      td[width="70%"]= link_to topic.title, topic
+      td[width="20%"]
+        = "#{time_ago_in_words(topic.created_at)}前, #{topic.replies.count}"
