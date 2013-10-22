@@ -1,1 +1,2 @@
 $('#replies').append('<%= j render(partial: "replies/reply", locals: {topic: @topic, reply: @reply, user: current_user }) %>')
+$('#new_reply textarea#reply_body').val('')
