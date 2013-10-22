@@ -4,7 +4,7 @@ feature 'ユーザは、自分のトピックを確認したい' do
   include_context 'login'
 
   background do
-    10.times { FactoryGirl.create(:topic, author: user) }
+    30.times { FactoryGirl.create(:topic, author: user) }
     user.reload
 
     visit user_path(user)
@@ -14,7 +14,7 @@ feature 'ユーザは、自分のトピックを確認したい' do
     expect(page.current_path).to eq user_path(user)
 
     within "#topics" do
-      user.topics.each do |topic|
+      user.topics.first(25).each do |topic|
         expect(page).to have_css "a", text: topic.title
       end
     end

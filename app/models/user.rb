@@ -4,5 +4,5 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   has_many :topics, foreign_key: "author_id"
+   has_many :topics, -> { order "created_at DESC" }, foreign_key: "author_id"
 end
