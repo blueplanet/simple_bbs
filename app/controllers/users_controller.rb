@@ -1,8 +1,17 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :topics]
 
   def show
-    @user = User.where(id: params[:id]).first
-    @topics = @user.topics.page params[:page]
     @replies = @user.replies.page params[:page]
   end
+
+  def topics
+    @topics = @user.topics.page params[:page]
+  end
+
+  private
+    def set_user
+      @user = User.where(id: params[:id]).first
+      redirect_to root_path unless @user
+    end
 end
