@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :reply do
     sequence(:body) {|n| "reply body #{n}"}
     topic { FactoryGirl.create(:topic) }
-    anthor { FactoryGirl.create(:user) }
+    author { FactoryGirl.create(:user) }
   end
 end
