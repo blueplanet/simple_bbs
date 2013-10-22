@@ -1,0 +1,18 @@
+.reply
+  .pull-left.gravatar
+    = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+  .infos
+    .info
+      span.name
+        = link_to reply.anthor.name, reply.anthor
+      = " #{time_ago_in_words(reply.updated_at)}#{t('.ago_replied')}"
+      span.pull-right
+        - if reply.anthor == user
+          = link_to edit_topic_reply_path(topic, reply)
+            i.icon-edit
+            = t('.edit')
+        '
+        a[href="#"]
+          i.icon-reply
+    .body
+      = reply.body
