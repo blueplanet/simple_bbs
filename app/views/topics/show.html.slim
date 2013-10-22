@@ -43,7 +43,10 @@
     .panel.panel-default
       .panel-heading= "合計 #{@topic.replies.count} 件の書き込み"
       #replies
-        = render partial: "replies/reply", collection: @topic.replies, locals: {topic: @topic, user: current_user}
+        = render partial: "replies/reply", collection: @replies, locals: {topic: @topic, user: current_user}
+      .panel-footer
+        center
+          = paginate @replies
     .panel.panel-default
       .panel-body
         .btn-toolbar
