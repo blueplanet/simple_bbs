@@ -8,7 +8,7 @@ feature 'ユーザは、自分の情報を確認したい' do
       30.times { FactoryGirl.create(:topic, author: user) }
       user.reload
 
-      visit user_path(user.reload)
+      visit topics_user_path(user.reload)
     end
 
     scenario '登録したトピック一覧が表示される' do
