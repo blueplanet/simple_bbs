@@ -4,7 +4,7 @@ class RepliesController < ApplicationController
 
   def create
     @reply = @topic.replies.build reply_params
-    @reply.anthor = current_user
+    @reply.author = current_user
 
     respond_to do |format|
       if @reply.save

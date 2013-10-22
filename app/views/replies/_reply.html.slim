@@ -4,10 +4,10 @@
   .infos
     .info
       span.name
-        = link_to reply.anthor.name, reply.anthor
+        = link_to reply.author.name, reply.author
       = " #{time_ago_in_words(reply.updated_at)}#{t('.ago_replied')}"
       span.pull-right
-        - if reply.anthor == user
+        - if reply.author == user
           = link_to edit_topic_reply_path(topic, reply)
             i.icon-edit
             = t('.edit')

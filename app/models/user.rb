@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :topics, -> { order "created_at DESC" }, foreign_key: "author_id"
+   has_many :replies, -> { order "created_at DESC" }, foreign_key: "author_id"
 end
