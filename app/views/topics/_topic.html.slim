@@ -3,7 +3,7 @@ li.list-group-item.topic-item
     = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
   .right-info
     span.pull-right.label.label-info
-      = topic.replies.count
+      = topic.replies.size
     .infos
       .title
         = link_to topic.title, topic
@@ -11,7 +11,8 @@ li.list-group-item.topic-item
         - if show_node
           = link_to topic.node.name, topic.node, class: "node"
           |  ・ 
-        = link_to "Yukihiro"
-        |  ・
-        = link_to "taro"
-        | さんが 4 時間前書き込みました 
+        = link_to topic.author.name, topic.author
+        - if topic.last_reply
+          |  ・
+          = link_to topic.last_reply.author.name, topic.last_reply.author
+          = "さんが #{time_ago_in_words(topic.last_reply.created_at)} 前書き込みました"

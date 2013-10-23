@@ -13,7 +13,7 @@
     .panel.panel-success
       .panel-heading
         .pull-right.gravatar
-          = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+          = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png", class: 'img-circle'
         h3.topic-title
           a[href=""]
             i.icon-star-empty
@@ -33,13 +33,6 @@
       .panel-body
         p
           = @topic.body
-        .tools
-          a[href="#"]
-            i.icon-twitter-sign.icon-2x
-          a[href="#"]
-            i.icon-facebook-sign.icon-2x
-          a[href="#"]
-            i.icon-google-plus-sign.icon-2x
     .panel.panel-default
       .panel-heading= "合計 #{@topic.replies.count} 件の書き込み"
       #replies
