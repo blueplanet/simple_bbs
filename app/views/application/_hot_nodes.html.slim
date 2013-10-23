@@ -1,0 +1,9 @@
+.panel.panel-info
+  .panel-heading
+    center
+      h2.panel-title
+        | 人気ノード
+  .panel-body.node-tags
+    - nodes.each do |node|
+      = link_to node
+        label.label.label-default= node.name

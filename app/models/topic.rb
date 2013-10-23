@@ -7,4 +7,12 @@ class Topic < ActiveRecord::Base
   validates :node_id, presence: true
   validates :title, presence: true
   validates :body, presence: true
+
+  after_create :update_node_hot
+
+  private
+    def update_node_hot
+      self.node.hot += 1
+      self.node.save
+    end
 end

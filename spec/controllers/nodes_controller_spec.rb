@@ -14,6 +14,10 @@ describe NodesController do
       expect(assigns(:node)).to be_a(Node)
     end
 
+    it "@hot_nodesは設定される" do
+      expect(assigns(:hot_nodes)).to_not be_nil
+    end
+
     it "@topicsは設定される" do
       expect(assigns(:topics)).to_not be_nil
     end

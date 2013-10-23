@@ -30,17 +30,4 @@
       .panel-body
         center
           = link_to "スレッドを作成", "#", class: "btn btn-primary"
-    .panel.panel-info
-      .panel-heading
-        center
-          h2.panel-title
-            | 人気ノード
-      .panel-body.node-tags
-        label.label.label-default[for=""]
-          | Rails
-        label.label.label-default[for=""]
-          | Ruby
-        label.label.label-default[for=""]
-          | Gem
-        label.label.label-default[for=""]
-          | 入門
+    = render "hot_nodes", nodes: @hot_nodes
