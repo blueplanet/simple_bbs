@@ -33,4 +33,15 @@ describe Topic do
       expect(topic.last_reply).to eq topic.replies.last
     end
   end
+
+  describe "#after_create" do
+    let(:node) { FactoryGirl.create(:node) }
+
+    it "Node.hot +1" do
+      expect {
+        Topic.create FactoryGirl.attributes_for(:topic, node: node)
+        node.reload
+      }.to change(node, :hot).by(1)
+    end
+  end
 end

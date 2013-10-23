@@ -5,6 +5,7 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.order("replies_count DESC").page params[:page]
+    @hot_nodes = Node.order("hot DESC").limit(4)
   end
 
   def show

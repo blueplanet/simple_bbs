@@ -8,6 +8,7 @@ describe TopicsController do
 
     it { response.should be_success }
     it { expect(assigns(:topics)).to_not be_nil }
+    it { expect(assigns(:hot_nodes)).to_not be_nil }
   end
 
   describe "GET 'show'" do
