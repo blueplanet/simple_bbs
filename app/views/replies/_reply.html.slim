@@ -1,6 +1,6 @@
 .reply
   .pull-left.gravatar
-    = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png", class: "img-circle"
+    = image_tag avatar_url(reply.author)
   .infos
     .info
       span.name

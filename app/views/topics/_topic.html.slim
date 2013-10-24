@@ -1,6 +1,6 @@
 li.list-group-item.topic-item
   .pull-left.gravatar
-    = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png"
+    = image_tag avatar_url(topic.author)
   .right-info
     span.pull-right.label.label-info
       = topic.replies.size
