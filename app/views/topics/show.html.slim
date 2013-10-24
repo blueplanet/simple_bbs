@@ -66,24 +66,12 @@
       .panel-body
         center
           = link_to "スレッドを作成", new_topic_path, class: "btn btn-primary"
-    .panel.panel-info
+    .panel.panel-info#other_topics
       .panel-heading
         center
           h2.panel-title
-            | ノードのその他スレッド
+            | ノードのその他トピック
       ul.list-group
-        li.list-group-item
-          a[href="#"]
-            | RSpecのエラー
-        li.list-group-item
-          a[href="#"]
-            | MiniTestの環境設定
-        li.list-group-item
-          a[href="#"]
-            | Capybaraのvisit
-        li.list-group-item
-          a[href="#"]
-            | RSpec+Capybaraで簡単なBDD入門
-        li.list-group-item
-          a[href="#"]
-            | オンラインでの「The RSpec Book」読書会を実施したい....
+        - @topic.node.topics.first(5).each do |topic|
+          li.list-group-item
+            = link_to topic.title, topic
