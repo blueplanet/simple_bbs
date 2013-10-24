@@ -30,4 +30,21 @@ feature "ゲストはトピックの詳細を見たい" do
 
     expect(page.current_path).to eq user_path(topic.author)
   end
+
+  scenario 'トピック詳細ページで、同一ノードの書き込み数が多いトピックが表示される' do
+    10.times { FactoryGirl.create(:topic, node: topic.node) }
+    top_topics = topic.node.reload.topics.sample(3)
+    [3, 5, 10].each_with_index do |n, i|
+      topic = top_topics[i]
+      FactoryGirl.create_list(:reply, n, topic: topic)
+    end
+
+    visit topic_path(topic)
+
+    within "#other_topics" do
+      top_topics.each do |topic|
+        expect(page).to have_css "a", text: topic.title
+      end
+    end
+  end
 end
