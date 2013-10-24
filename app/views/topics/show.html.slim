@@ -13,7 +13,7 @@
     .panel.panel-success
       .panel-heading
         .pull-right.gravatar
-          = image_tag "http://gravatar.com/avatar/aaaaaaaaaaaa.png", class: 'img-circle'
+          = image_tag avatar_url(@topic.author)
         h3.topic-title
           a[href=""]
             i.icon-star-empty
