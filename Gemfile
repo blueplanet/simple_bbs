@@ -19,6 +19,8 @@ gem 'kaminari'
 gem 'devise'
 gem 'devise-i18n-views'
 
+gem 'redcarpet'
+
 group :production do
   gem 'rails_12factor'
   gem 'newrelic_rpm'
