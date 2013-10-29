@@ -5,7 +5,7 @@ feature 'ユーザは、トピックを新規したい' do
 
   background do
     3.times { FactoryGirl.create(:node) }
-    visit root_path
+    visit node_path(Node.all.sample)
   end
 
   scenario 'トピック一覧画面にトピック新規リンクが表示される' do
