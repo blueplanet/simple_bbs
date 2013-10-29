@@ -63,14 +63,6 @@
           = link_to 'インフラ'
           = link_to 'クラウドサービス'
   .col-lg-3
-    .panel.panel-info
-      .panel-heading
-        center
-          h2.panel-title
-            | Rails
-      .panel-body
-        center
-          = link_to t('.new_topic'), new_topic_path, class: "btn btn-primary"
     = render 'hot_nodes', nodes: @hot_nodes
     .panel.panel-info
       .panel-heading

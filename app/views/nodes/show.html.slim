@@ -25,9 +25,8 @@
     .panel.panel-info
       .panel-heading
         center
-          h2.panel-title
-            | Rails
+          h2.panel-title= @node.name
       .panel-body
         center
-          = link_to "スレッドを作成", "#", class: "btn btn-primary"
+          = link_to t('links.new_topic'), new_topic_path, class: "btn btn-primary"
     = render "hot_nodes", nodes: @hot_nodes
