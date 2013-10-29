@@ -5,6 +5,7 @@ class AddBodyHtmlToTopics < ActiveRecord::Migration
     Topic.reset_column_information
     Topic.all.each do |topic|
       topic.body_html = topic.body
+      topic.save validate: false
     end
   end
 end
