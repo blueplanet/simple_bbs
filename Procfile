@@ -1,1 +1,1 @@
-web: bundle exec rails server thin -p $PORT
+web: bundle exec puma -p $PORT -t 0:5
