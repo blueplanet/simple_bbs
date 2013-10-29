@@ -1,4 +1,6 @@
 class Topic < ActiveRecord::Base
+  include ApplicationHelper
+  
   belongs_to :node
   belongs_to :author, class_name: "User"
   has_many :replies, -> { order :created_at }
@@ -18,6 +20,6 @@ class Topic < ActiveRecord::Base
     end
 
     def update_body_html
-      self.body_html = self.body
+      self.body_html = markdown(self.body)
     end
 end
