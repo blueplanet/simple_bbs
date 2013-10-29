@@ -1,7 +1,7 @@
 class TopicsController < ApplicationController
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_topic, only: [:show, :edit, :update]
-  before_action :set_nodes, only: [:new, :edit]
+  before_action :set_nodes, only: [:new, :edit, :create]
 
   def index
     @topics = Topic.order("replies_count DESC").page params[:page]

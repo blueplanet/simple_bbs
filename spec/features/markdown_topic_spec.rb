@@ -2,7 +2,10 @@ require 'spec_helper'
 
 feature 'ユーザは、Markdownでトピック内容を編集したい' do
   include_context 'login'
-  background { FactoryGirl.create_list(:node, 3) }
+
+  background do
+    FactoryGirl.create(:node)
+  end
 
   scenario 'Markdownで内容を入力し、保存するとHTMLに変換される' do
     pending

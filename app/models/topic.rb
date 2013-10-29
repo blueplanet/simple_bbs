@@ -8,11 +8,16 @@ class Topic < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true
 
+  before_save :update_body_html
   after_create :update_node_hot
 
   private
     def update_node_hot
       self.node.hot += 1
       self.node.save
+    end
+
+    def update_body_html
+      self.body_html = self.body
     end
 end

@@ -32,7 +32,7 @@
           |  ・203回閲覧 
       .panel-body
         p
-          = @topic.body
+          = @topic.body_html
     .panel.panel-default
       .panel-heading= "合計 #{@topic.replies.count} 件の書き込み"
       #replies
