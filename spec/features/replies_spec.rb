@@ -39,7 +39,6 @@ feature 'ユーザは、トピックに対して書き込みしたい' do
     click_button '書き込む'
 
     expect(page.current_path).to eq topic_path(topic)
-    expect(page).to have_content I18n.t('replies.notices.created')
 
     within "#replies .reply:last-child" do
       expect(page).to have_css "span.name", text: user.name

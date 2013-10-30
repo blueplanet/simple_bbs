@@ -8,7 +8,8 @@ class RepliesController < ApplicationController
 
     respond_to do |format|
       if @reply.save
-        format.html { redirect_to @topic, notice: t('replies.notices.created') }
+        @msg = t('replies.notices.created')
+        format.html { redirect_to @topic, flash: { reply_notice: @msg } }
         format.js
       else
         format.html { redirect_to @topic }
@@ -19,7 +20,7 @@ class RepliesController < ApplicationController
 
   def update
     if @reply.update reply_params
-      redirect_to @topic, notice: t('replies.notices.updated')
+      redirect_to @topic, flash: { reply_notice: t('replies.notices.updated') }
     else
       render :edit
     end

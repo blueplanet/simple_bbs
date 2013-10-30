@@ -7,7 +7,7 @@ html
     = stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  body
+  body data-controller-name="#{controller_name}"
     = render 'navbar'
     .container
       = render 'notice'
