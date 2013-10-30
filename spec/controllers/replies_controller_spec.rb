@@ -52,7 +52,7 @@ describe RepliesController do
 
       it { expect(response).to redirect_to topic }
       it { expect(assigns(:reply).id).to eq reply.id }
-      it { expect(flash[:notice]).to eq I18n.t('replies.notices.updated') }
+      it { expect(flash[:reply_notice]).to eq I18n.t('replies.notices.updated') }
     end
 
     context "異常のパラメータの場合" do
