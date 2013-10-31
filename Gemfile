@@ -10,7 +10,7 @@ gem 'jbuilder', '~> 1.2'
 gem 'slim-rails'
 
 gem 'foreman'
-gem 'thin'
+gem 'puma'
 gem 'pg'
 
 gem 'bootstrap-sass', github: 'thomas-mcdonald/bootstrap-sass'

@@ -11,7 +11,7 @@ describe RepliesController do
 
       it { expect(assigns(:topic)).to eq topic }
       it { should redirect_to topic_path(topic) }
-      it { expect(flash[:notice]).to eq I18n.t('replies.notices.created') }
+      it { expect(flash[:reply_notice]).to eq I18n.t('replies.notices.created') }
 
       it "書き込みが追加される" do
         expect {
@@ -52,7 +52,7 @@ describe RepliesController do
 
       it { expect(response).to redirect_to topic }
       it { expect(assigns(:reply).id).to eq reply.id }
-      it { expect(flash[:notice]).to eq I18n.t('replies.notices.updated') }
+      it { expect(flash[:reply_notice]).to eq I18n.t('replies.notices.updated') }
     end
 
     context "異常のパラメータの場合" do

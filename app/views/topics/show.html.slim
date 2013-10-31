@@ -40,7 +40,10 @@
       .panel-footer
         center
           = paginate @replies
-    .panel.panel-default
+
+    #reply_notice style="display: none;"
+
+    #reply.panel.panel-default
       .panel-body
         .btn-toolbar
           .btn-group
