@@ -32,6 +32,16 @@ describe TopicsController do
     it { expect(assigns(:nodes)).to eq Node.all }
   end
 
+  describe "POST preview" do
+    before do
+      sign_in user
+      post :preview, {body: '## title2'}
+    end
+
+    it { expect(response).to be_success }
+    it { expect(JSON.parse(response.body)).to eq ({"body_html" => "<h2>title2</h2>\n"}) }
+  end
+
   describe "GET edit" do
     let(:topic) { FactoryGirl.create(:topic) }
 

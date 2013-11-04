@@ -1,4 +1,6 @@
 class TopicsController < ApplicationController
+  include ApplicationHelper
+
   before_action :authenticate_user!, except: [:show, :index]
   before_action :set_topic, only: [:show, :edit, :update]
   before_action :set_nodes, only: [:new, :edit, :create]
@@ -32,6 +34,12 @@ class TopicsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def preview
+    @body = params[:body]
+
+    render json: { body_html: markdown(@body) }
   end
 
   private
