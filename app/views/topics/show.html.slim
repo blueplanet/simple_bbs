@@ -45,21 +45,19 @@
 
     #reply.panel.panel-default
       .panel-body
-        .btn-toolbar
-          .btn-group
-            a.btn.btn-default[href="#" disabled]
-              | 編集
-            a.btn.btn-default[href="#"]
-              | プレビュー
         = form_for [@topic, @topic.replies.build], html: {class: "reply-form"}, remote: true do |f|
-          .row
+          .form-group
+            .col-lg-12
+              = link_to t('links.edit'), "#", class: "edit btn btn-default"
+              = link_to t('links.preview'), "#", class: "preview btn"
+          .form-group
             .col-lg-10
-              = f.text_area :body, class: "form-control", rows: "4"
+              = f.text_area :body, class: "form-control markdown_editor", rows: "4"
+              b
+                span.help-block
+                  | Markdownで編集出来ます。
             .col-lg-2
               = f.submit t('.create_reply'), class: 'btn btn-primary', data: {disable_with: t('.sending')}
-        b
-          span.help-block
-            | Markdownで編集出来ます。
   .col-lg-3
     .panel.panel-info
       .panel-heading

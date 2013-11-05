@@ -8,7 +8,10 @@
           = f.text_field :title, placeholder: t('.title_placeholder', default: 'Please input title'), class: 'form-control'
       .form-group
         .col-lg-12
-          = f.text_area :body, { class: 'form-control', rows: 20 }
+          = link_to t('links.edit'), "#", class: "edit btn btn-default"
+          = link_to t('links.preview'), "#", class: "preview btn"
+      .form-group
+        .col-lg-12
+          = f.text_area :body, { class: 'form-control markdown_editor', rows: 20 }
       .form-gorup
         = f.submit t('.save'), class: 'btn btn-primary'
-        = link_to t('.preview'), "", class: 'btn preview'

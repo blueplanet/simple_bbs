@@ -8,30 +8,30 @@ window.Topics =
       $('#reply_notice').html("<div class='alert alert-info'>#{msg}</div>").show().fadeOut(3000);
 
   init : () ->
-    Topics.hootPreview($('#topic_body'))
+    Topics.hootPreview($('.markdown_editor'))
 
   hootPreview : (textarea) ->
-    preview_box = $(document.createElement('div')).attr 'id', "preview"
+    active_class = "btn-default"
+    preview_box = $(document.createElement('div')).attr 'id', "preview", 'class', "panel panel-default"
+    preview_box.attr 'class', "panel panel-default"
     $(textarea).after preview_box
     preview_box.hide()
 
-    $(document).on 'click', 'a.preview', ->
+    $("a.preview").on 'click', ->
       Topics.preview($(textarea).val())
       $(preview_box).show()
       $(textarea).hide()
 
-      $(this).text('Edit')
-      $(this).removeClass('preview')
-      $(this).addClass('edit')
+      $("a.edit").removeClass(active_class)
+      $(this).addClass(active_class)
       false
 
-    $(document).on 'click', 'a.edit', ->
+    $("a.edit").on 'click', ->
       $(preview_box).hide()
       $(textarea).show()
 
-      $(this).text('Preview')
-      $(this).removeClass('edit')
-      $(this).addClass('preview')
+      $("a.preview").removeClass(active_class)
+      $(this).addClass(active_class)
       false
 
   preview : (body) ->
