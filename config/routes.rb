@@ -7,6 +7,8 @@ SimpleBbs::Application.routes.draw do
 
   resources :topics, only: [:index, :show, :new, :create, :edit, :update] do
     resources :replies, only: [:create, :edit, :update, :destroy]
+
+    post :preview, on: :collection
   end
 
   resources :nodes, only: [:show]
