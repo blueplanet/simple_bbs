@@ -1,8 +1,7 @@
 .panel.panel-info
   .panel-heading
     center
-      h2.panel-title
-        | 人気ノード
+      h2.panel-title= t('.hot_nodes')
   .panel-body.node-tags
     - nodes.each do |node|
       = link_to node

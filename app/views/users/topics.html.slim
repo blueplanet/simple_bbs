@@ -1,10 +1,8 @@
 .row
   .col-lg-12
     ul.nav.nav-tabs
-      li= link_to "アカウント情報", user_path(@user)
-      li.active
-        a[href="#topics" data-toggle="tab"]
-          | スレッド
+      li= link_to t('users.links.account_info'), user_path(@user)
+      li.active= link_to t('users.links.topics')
 .row
   .col-lg-12
     .tab-content
@@ -16,7 +14,7 @@
                 td[width="10%"]= link_to topic.node.name, topic.node
                 td[width="70%"]= link_to topic.title, topic
                 td[width="20%"]
-                  = "#{time_ago_in_words(topic.created_at)}前, #{topic.replies.count}"
+                  = t('.topic_info', time_ago: time_ago_in_words(topic.created_at), replies: topic.replies.size )
           tfoot
             tr
               td[colspan="3"]

@@ -1,10 +1,8 @@
 .row
   .col-lg-12
     ul.nav.nav-tabs
-      li.active
-        a[href="#account" data-toggle="tab"]
-          | アカウント情報
-      li= link_to "トピック", topics_user_path(@user)
+      li.active= link_to t('users.links.account_info'), "#account", data: {toggle: "tab" }
+      li= link_to t('users.links.topics'), topics_user_path(@user)
 .row
   .col-lg-12
     .tab-content

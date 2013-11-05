@@ -15,4 +15,4 @@ li.list-group-item.topic-item
         - if topic.last_reply
           |  ・
           = link_to topic.last_reply.author.name, topic.last_reply.author
-          = "さんが #{time_ago_in_words(topic.last_reply.created_at)} 前書き込みました"
+          = t('topics.show.replied_at', replied_at: time_ago_in_words(topic.last_reply.created_at))

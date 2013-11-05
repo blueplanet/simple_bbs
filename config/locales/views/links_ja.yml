@@ -1,8 +1,11 @@
 ja:
   links:
+    home: ホーム
     sign_up: サインアップ
     sign_in: サインイン
     sign_out: 'サインアウト'
     new_topic: トピックを作成
+    edit_topic: トピック編集
+    show_topic: トピック閲覧
     edit: 編集
     preview: プレビュー

@@ -4,14 +4,14 @@ html
     title
       | SimpleBBS
     = stylesheet_link_tag    "application", media: "all"
-    = stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+    = stylesheet_link_tag    "http://netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.css"
     = javascript_include_tag "application"
     = csrf_meta_tags
   body data-controller-name="#{controller_name}"
     = render 'navbar'
     .container
-      = render 'notice'
-      = render 'alert'
+      = render 'alert', alert: notice, class_name: "info"
+      = render 'alert', alert: alert, class_name: "warning"
       = yield
     nav.navbar.navbar-static-bottom[role="navigation"]
       .container

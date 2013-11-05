@@ -1,13 +1,9 @@
 .row
   .col-lg-12
     ul.breadcrumb
-      li
-        a[href="/"]
-          | Home
-      li
-        = link_to @topic.node.name, @topic.node
-      li.active
-        | スレッド閲覧
+      li= link_to t('links.home'), root_path
+      li= link_to @topic.node.name, @topic.node
+      li.active= t('links.show_topic')
 .row
   .col-lg-9
     .panel.panel-success
@@ -15,28 +11,24 @@
         .pull-right.gravatar
           = image_tag avatar_url(@topic.author)
         h3.topic-title
-          a[href=""]
-            i.icon-star-empty
-          = link_to t('.edit'), edit_topic_path(@topic)
+          = link_to edit_topic_path(@topic)
+            i.fa.fa-edit
           '
           = @topic.title
         small.info.leader
           = link_to @topic.author.name, @topic.author, class: "topic-user"
-          |  さん 18 時間前作成しました 
+          = t('.created_at', created: time_ago_in_words(@topic.created_at))
           - if @last_reply
-            |  ・最後は 
-            = link_to "yuiti takana"
-            |  さんが 
-            = time_ago_in_words(@last_reply.created_at)
-            |  書き込みました 
-          |  ・203回閲覧 
+            = t('.last_reply')
+            = link_to @last_reply.author.name, @last_reply.author
+            = t('.replied_at', replied_at: time_ago_in_words(@last_reply.created_at))
       .panel-body
         p
           = raw @topic.body_html
     .panel.panel-default
-      .panel-heading= "合計 #{@topic.replies.count} 件の書き込み"
+      .panel-heading= t('.replies_count', count: @topic.replies.size)
       #replies
-        = render partial: "replies/reply", collection: @replies, locals: {topic: @topic, user: current_user}
+        = render partial: "replies/reply", collection: @replies, locals: {user: current_user}
       .panel-footer
         center
           = paginate @replies
@@ -47,15 +39,12 @@
       .panel-body
         = form_for [@topic, @topic.replies.build], html: {class: "reply-form"}, remote: true do |f|
           .form-group
-            .col-lg-12
-              = link_to t('links.edit'), "#", class: "edit btn btn-default"
-              = link_to t('links.preview'), "#", class: "preview btn"
+            = render "markdown_toolbar"
           .form-group
             .col-lg-10
               = f.text_area :body, class: "form-control markdown_editor", rows: "4"
               b
-                span.help-block
-                  | Markdownで編集出来ます。
+                span.help-block= t('.markdown') 
             .col-lg-2
               = f.submit t('.create_reply'), class: 'btn btn-primary', data: {disable_with: t('.sending')}
   .col-lg-3
@@ -69,8 +58,7 @@
     .panel.panel-info#other_topics
       .panel-heading
         center
-          h2.panel-title
-            | ノードのその他トピック
+          h2.panel-title= t('.other_topics')
       ul.list-group
         - @topic.node.topics.first(5).each do |topic|
           li.list-group-item
