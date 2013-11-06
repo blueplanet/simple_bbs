@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   include ApplicationHelper
 
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_topic, only: [:show, :edit, :update]
+  before_action :set_topic, only: [:show, :edit, :update, :favorite]
   before_action :set_nodes, only: [:new, :edit, :create]
 
   def index
@@ -40,6 +40,11 @@ class TopicsController < ApplicationController
     @body = params[:body]
 
     render json: { body_html: markdown(@body) }
+  end
+
+  def favorite
+    current_user.favorite(@topic)
+    redirect_to @topic
   end
 
   private

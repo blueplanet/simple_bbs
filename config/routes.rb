@@ -9,6 +9,7 @@ SimpleBbs::Application.routes.draw do
     resources :replies, only: [:create, :edit, :update, :destroy]
 
     post :preview, on: :collection
+    post :favorite, on: :member
   end
 
   resources :nodes, only: [:show]
