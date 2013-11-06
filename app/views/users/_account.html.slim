@@ -14,12 +14,15 @@
 #replies.panel.panel-info
   .panel-heading= t('.last_replies') 
   ul.list-group
-    - @replies.each do |reply|
-      li.list-group-item
-        = link_to reply.topic.title, reply.topic
-        span= " #{time_ago_in_words(reply.created_at)}"
-        p= raw reply.body_html
+    - if @replies.count > 0
+      - @replies.each do |reply|
+        li.list-group-item
+          = link_to reply.topic.title, reply.topic
+          span= " #{time_ago_in_words(reply.created_at)}"
+          p= raw reply.body_html
+      .panel-footer
+        center
+          = paginate @replies
 
-  .panel-footer
-    center
-      = paginate @replies
+    - else
+      li.list-group-item = t('.not_reply')

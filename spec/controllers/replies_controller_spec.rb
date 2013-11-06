@@ -12,6 +12,7 @@ describe RepliesController do
       it { expect(assigns(:topic)).to eq topic }
       it { should redirect_to topic_path(topic) }
       it { expect(flash[:reply_notice]).to eq I18n.t('replies.notices.created') }
+      it { expect(Reply.last.author).to eq user }
 
       it "書き込みが追加される" do
         expect {
