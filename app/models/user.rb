@@ -11,4 +11,8 @@ class User < ActiveRecord::Base
   def favorite(topic)
     favorites << topic
   end
+
+  def unfavorite(topic)
+    favorites.delete topic
+  end
 end

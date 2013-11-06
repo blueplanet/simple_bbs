@@ -12,5 +12,13 @@ feature 'ユーザは、あるトピックをお気に入り出来ます' do
     click_link 'お気に入りリスト'
 
     expect(page).to have_css 'a', text: topic.title
+
+    visit topic_path(topic)
+    click_link 'お気に入りから削除'
+
+    visit user_path(user)
+    click_link 'お気に入りリスト'
+
+    expect(page).to_not have_css 'a', text: topic.title
   end
 end

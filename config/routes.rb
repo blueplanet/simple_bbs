@@ -11,6 +11,7 @@ SimpleBbs::Application.routes.draw do
 
     post :preview, on: :collection
     post :favorite, on: :member
+    post :unfavorite, on: :member
   end
 
   resources :nodes, only: [:show]

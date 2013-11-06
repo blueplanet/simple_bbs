@@ -2,7 +2,7 @@ class TopicsController < ApplicationController
   include ApplicationHelper
 
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_topic, only: [:show, :edit, :update, :favorite]
+  before_action :set_topic, only: [:show, :edit, :update, :favorite, :unfavorite]
   before_action :set_nodes, only: [:new, :edit, :create]
 
   def index
@@ -44,6 +44,11 @@ class TopicsController < ApplicationController
 
   def favorite
     current_user.favorite(@topic)
+    redirect_to @topic
+  end
+
+  def unfavorite
+    current_user.unfavorite(@topic)
     redirect_to @topic
   end
 

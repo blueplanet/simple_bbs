@@ -26,6 +26,7 @@ ja:
       markdown: Markdownで編集出来ます。
       other_topics: ノードのその他トピック
       favorite: お気に入りに追加
+      unfavorite: お気に入りから削除
     form:
       title_placeholder: タイトルを入力してください
       save: 保存

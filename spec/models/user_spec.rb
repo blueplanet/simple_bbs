@@ -16,7 +16,21 @@ describe User do
         user.favorite(topic)
       }.to change(user.favorites, :count).by(1)
 
-      expect(user.favorites.first).to eq topic
+      expect(user.favorites).to include(topic)
+    end
+  end
+
+  describe "#unfavorite" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:topic) { FactoryGirl.create(:topic) }
+    before { user.favorite(topic) }
+
+    it "お気に入りから削除される" do
+      expect {
+        user.unfavorite(topic)
+      }.to change(user.favorites, :count).by(-1)
+
+      expect(user.favorites).to_not include(topic)
     end
   end
 end
