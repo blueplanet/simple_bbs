@@ -93,4 +93,41 @@ describe TopicsController do
       it { expect(response).to_not redirect_to(topic_path(topic))}
     end
   end
+
+  describe "POST favorite" do
+    let(:topic) { FactoryGirl.create(:topic) }
+    before { sign_in user }
+
+    context "正常パラメータの場合" do
+      before { post :favorite, {id: topic} }
+
+      it "favoriteが呼び出される" do
+        expect_any_instance_of(User).to receive(:favorite)
+
+        post :favorite, {id: topic}
+      end
+
+      it { expect(response).to redirect_to topic }
+    end
+  end
+
+  describe "POST unfavorite" do
+    let(:topic) { FactoryGirl.create(:topic) }
+    before do
+      sign_in user
+      user.favorite(topic)
+    end
+
+    context "正常パラメータの場合" do
+      before { post :unfavorite, {id: topic} }
+
+      it "favoriteが呼び出される" do
+        expect_any_instance_of(User).to receive(:unfavorite)
+
+        post :unfavorite, {id: topic}
+      end
+
+      it { expect(response).to redirect_to topic }
+    end
+  end
 end

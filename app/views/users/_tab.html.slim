@@ -5,3 +5,5 @@
         = link_to t('users.links.account_info'), user_path(@user)
       li class="#{'active' if active == 'topics'}" 
         = link_to t('users.links.topics'), topics_user_path(@user)
+      li class="#{'active' if active == 'favorites'}" 
+        = link_to t('users.links.favorites'), favorites_user_path(@user)

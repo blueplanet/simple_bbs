@@ -11,8 +11,9 @@
         .pull-right.gravatar
           = image_tag avatar_url(@topic.author)
         h3.topic-title
-          = link_to edit_topic_path(@topic)
-            i.fa.fa-edit
+          - if @topic.author == current_user
+            = link_to edit_topic_path(@topic)
+              i.fa.fa-edit
           '
           = @topic.title
         small.info.leader
@@ -25,6 +26,9 @@
       .panel-body
         p
           = raw @topic.body_html
+      .panel-footer
+        = raw_favorite_link(@topic)
+
     .panel.panel-default
       .panel-heading= t('.replies_count', count: @topic.replies.size)
       #replies
