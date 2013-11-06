@@ -6,8 +6,9 @@ class User < ActiveRecord::Base
 
   has_many :topics, -> { order "created_at DESC" }, foreign_key: "author_id"
   has_many :replies, -> { order "created_at DESC" }, foreign_key: "author_id"
+  has_and_belongs_to_many :favorites, -> { order "created_at DESC"}, class_name: "Topic"
 
   def favorite(topic)
-    
+    favorites << topic
   end
 end

@@ -3,6 +3,7 @@ ja:
     links:
       account_info: アカウント情報
       topics: トピック
+      favorites: お気に入りリスト
     account:
       id: ID
       sign_up: サインアップ

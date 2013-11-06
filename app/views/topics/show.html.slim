@@ -27,7 +27,7 @@
         p
           = raw @topic.body_html
       .panel-footer
-        = link_to "favorite", favorite_topic_path(@topic), method: :post
+        = link_to t(".favorite"), favorite_topic_path(@topic), method: :post
 
     .panel.panel-default
       .panel-heading= t('.replies_count', count: @topic.replies.size)
