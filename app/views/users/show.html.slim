@@ -1,8 +1,5 @@
-.row
-  .col-lg-12
-    ul.nav.nav-tabs
-      li.active= link_to t('users.links.account_info'), "#account", data: {toggle: "tab" }
-      li= link_to t('users.links.topics'), topics_user_path(@user)
+= render "tab", active: "account"
+
 .row
   .col-lg-12
     .tab-content

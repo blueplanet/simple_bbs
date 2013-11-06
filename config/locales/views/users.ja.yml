@@ -8,5 +8,6 @@ ja:
       sign_up: サインアップ
       last_replies: 最近の書き込み
       user_seq: "第 %{id} 名会員"
+      not_reply: 書き込みなし
     topics:
       topic_info: "%{time_ago}前, 書き込み %{replies} 件"

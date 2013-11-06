@@ -3,8 +3,7 @@ class RepliesController < ApplicationController
   before_action :set_reply, only: [:edit, :update, :destroy]
 
   def create
-    @reply = @topic.replies.build reply_params
-    @reply.author = current_user
+    @reply = @topic.replies.build reply_params.merge(author: current_user)
 
     respond_to do |format|
       if @reply.save
