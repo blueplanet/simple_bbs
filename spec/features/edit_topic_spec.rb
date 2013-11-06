@@ -7,11 +7,11 @@ feature 'ユーザは、自分のトピックを編集したい' do
   before { visit topic_path(topic) }
 
   scenario 'トピックページに編集リンクが表示される' do
-    expect(page).to have_css 'h3 a', text: '編集'
+    expect(page).to have_css 'h3 a'
   end
 
   scenario '編集リンクをクリックすると、編集ページに遷移される' do
-    first(:link, '編集').click
+    first('h3 a').click
 
     expect(page.current_path).to eq edit_topic_path(topic)
   end
@@ -20,7 +20,7 @@ feature 'ユーザは、自分のトピックを編集したい' do
     title = Faker::Lorem.sentence
     body = Faker::Lorem.paragraph
 
-    first(:link, '編集').click
+    first('h3 a').click
 
     fill_in "topic_title",  with: title
     fill_in "topic_body",  with: body

@@ -1,79 +1,26 @@
 .row
   .col-lg-12
     ul.breadcrumb
-      li
-        a[href="/"]
-          | Home
-      li.active
-        | 人気スレッド
+      li= link_to t('links.home'), root_path
+      li.active= t('.hot_topics')
 .row
   .col-lg-9
     .panel.panel-default
       .panel-heading
         center
           .btn-group
-            button.btn.btn-default[disabled]
-              | 人気スレッド
-            button.btn.btn-default
-              | お気に入り多い
-            button.btn.btn-default
-              | 書き込みなし
-            button.btn.btn-default
-              | 最近作成
+            button.btn.btn-default[disabled]= t('.hot_topics')
+            button.btn.btn-default= t('.non_reply')
+            button.btn.btn-default= t('.new')
       ul#topics.list-group
         = render partial: "topic", collection: @topics, locals: {show_node: true}
       .panel-footer
         center
           = paginate @topics
     #sections.panel.panel-default
-      .panel-heading.text-center
-        | ノードナビゲーション
-      ul.list-group
-        li.list-group-item
-          label[for=""]
-            | Ruby
-          = link_to 'Ruby', "node_topics"
-          = link_to 'Rails', "node_topics"
-          = link_to 'Gem', "node_topics"
-          = link_to 'リファクタリング', "node_topics"
-          = link_to 'Testing', "node_topics"
-          = link_to 'Sinatra', "node_topics"
-          = link_to 'デプロイ', "node_topics"
-          = link_to 'RVM', "node_topics"
-          = link_to 'オープンソースプロジェクト', "node_topics"
-          = link_to '初心者質問', "node_topics"
-          = link_to 'JRuby', "node_topics"
-        li.list-group-item
-          label[for=""]
-            | シェア
-          = link_to '健康'
-          = link_to 'ツール'
-          = link_to '本'
-          = link_to 'Mac'
-          = link_to '起業'
-        li.list-group-item
-          label[for=""]
-            | WEB開発
-          = link_to 'MongoDB'
-          = link_to 'Redis'
-          = link_to 'Git'
-          = link_to 'Nginx'
-          = link_to 'CSS'
-          = link_to 'WEBセキュリティ'
-          = link_to 'インフラ'
-          = link_to 'クラウドサービス'
+      .panel-heading.text-center= t('.nodes')
+      .panel-body
+        - Node.all.each do |node|
+          = link_to node.name, node, class: "btn btn-default"
   .col-lg-3
     = render 'hot_nodes', nodes: @hot_nodes
-    .panel.panel-info
-      .panel-heading
-        center
-          h2.panel-title
-            | 統計情報
-      .panel-body
-        ul
-          li
-            | 会員数：5342 人
-          li
-            | スレッド数：7218 個
-          li
-            | 書き込み数：75977 回

@@ -1,19 +1,14 @@
 .row
   .col-lg-12
     ul.breadcrumb
-      li
-        = link_to 'Home', root_path
-      li.active
-        | スレッド編集
+      li= link_to t('links.home'), root_path
+      li.active= link_to t('links.edit_topic')
 .row
   .col-lg-9
     = render "form"
   .col-lg-3.text-center
     .panel.panel-info
-      .panel-heading
-        | オープンソースプロジェクト
+      .panel-heading= @topic.node.name
       .panel-body
-        p
-          | オープンソースプロジェクトをシェアし、設計と使用を議論する
-        a.btn.btn-success[href=""]
-          | スレッドを作成
+        p= @topic.node.description
+        = link_to t('links.new_topic'), new_topic_path, class: 'btn btn-success'

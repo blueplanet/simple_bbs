@@ -8,6 +8,7 @@ FactoryGirl.define do
     author { FactoryGirl.create(:user) }
 
     factory :topic_with_replies do
+      replies_count 10
       replies {
         FactoryGirl.create_list(:reply, 10)
       }

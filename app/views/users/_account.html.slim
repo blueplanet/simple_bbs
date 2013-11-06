@@ -5,100 +5,20 @@
     .col-lg-10
       dl.dl-horizontal
         dt
-        dd
-          | 第 2650 名会員
-        dt
-          | ID
-        dd
-          | blueplanet
-        dt
-          | Twitter
-        dd
-          a[href="#"]
-            | @blueplanet42
-        dt
-          | サインアップ
-        dd
-          | 2012年6月25日
-.panel.panel-info
-  .panel-heading
-    | お気に入り数が多いスレッド
-  ul.list-group
-    li.list-group-item
-      .pull-right
-        |  お気に入り 
-        span.badge
-          | 39
-        |  件、書き込み 
-        span.badge
-          | 13
-        |  件 
-      span.label.label-default
-        | Testing
-      a[href="#"]
-        | 使用 RSpec + Capybara 简单 BDD 入门 -目录
-    li.list-group-item
-      .pull-right
-        |  お気に入り 
-        span.badge
-          | 2
-        |  件、書き込み 
-        span.badge
-          | 4
-        |  件 
-      span.label.label-default
-        | Testing
-      a[href="#"]
-        | 使用 RSpec+Capybara 简单BDD入门 -1
-    li.list-group-item
-      .pull-right
-        |  お気に入り 
-        span.badge
-          | 1
-        |  件、書き込み 
-        span.badge
-          | 2
-        |  件 
-      span.label.label-default
-        | Testing
-      a[href="#"]
-        | feature spec / integration spec( request spec) / controller spec 的区别
-    li.list-group-item
-      .pull-right
-        |  お気に入り 
-        span.badge
-          | 0
-        |  件、書き込み 
-        span.badge
-          | 7
-        |  件 
-      span.label.label-default
-        | 初心者質問
-      a[href="#"]
-        | ruby-china 里面，ajax 如何实现的？
-    li.list-group-item
-      .pull-right
-        |  お気に入り 
-        span.badge
-          | 0
-        |  件、書き込み 
-        span.badge
-          | 7
-        |  件 
-      span.label.label-default
-        | 初心者質問
-      a[href="#"]
-        | 类似性别选项这样的固定分类如何做 i18n 国际化对应
+        dd= t('.user_seq', id: @user.id)
+        dt= t('.id') 
+        dd= @user.name
+        dt= t('.sign_up')
+        dd= l @user.created_at.to_date, format: :long
 
 #replies.panel.panel-info
-  .panel-heading
-    | 最近の書き込み
+  .panel-heading= t('.last_replies') 
   ul.list-group
     - @replies.each do |reply|
       li.list-group-item
         = link_to reply.topic.title, reply.topic
         span= " #{time_ago_in_words(reply.created_at)}"
-        p= reply.body
+        p= raw reply.body_html
 
   .panel-footer
     center

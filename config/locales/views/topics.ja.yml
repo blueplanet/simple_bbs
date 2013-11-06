@@ -6,12 +6,25 @@ ja:
       updated: トピック更新しました。
     index:
       new_topic: トピックを作成
+      hot_topics: 人気トピック
+      non_reply: 書き込みなし
+      new: 最新作成
+      nodes: ノード一覧
     new:
-      preview: プレビュー
+      title: トピック新規
       title_placeholder: タイトルを入力してください
+      description: トピック新規説明
+      bold: "**太字**"
     show:
       edit: 編集
       create_reply: 書き込む
       sending: 送信中
+      created_at: " さん %{created} 前作成しました"
+      last_reply: "・最後は "
+      replied_at: " さんが %{replied_at} 書き込みました"
+      replies_count: "合計 %{count} 件の書き込み"
+      markdown: Markdownで編集出来ます。
+      other_topics: ノードのその他トピック
     form:
+      title_placeholder: タイトルを入力してください
       save: 保存
