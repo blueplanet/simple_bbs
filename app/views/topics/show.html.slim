@@ -17,6 +17,9 @@
           '
           = @topic.title
         small.info.leader
+          = link_to @topic.node
+            label.label.label-default= @topic.node.name
+          '
           = link_to @topic.author.name, @topic.author, class: "topic-user"
           = t('.created_at', created: time_ago_in_words(@topic.created_at))
           - if @last_reply

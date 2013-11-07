@@ -12,7 +12,7 @@
           = @node.name
         = @node.description
       ul.list-group
-        = render partial: 'topics/topic', collection: @topics, locals: {show_node: false}
+        = render partial: 'topics/topic', collection: @topics, locals: {show_node: false, favorites: false}
       .panel-footer
         center
           = paginate @topics

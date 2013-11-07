@@ -6,9 +6,17 @@ describe TopicsController do
   describe "GET 'index'" do
     before { get :index }
 
-    it { response.should be_success }
+    it { expect(response).to be_success }
     it { expect(assigns(:topics)).to_not be_nil }
     it { expect(assigns(:hot_nodes)).to_not be_nil }
+  end
+
+  describe "GET favorites" do
+    before { get :favorites } 
+
+    it { expect(response).to be_success }
+    it { expect(assigns(:topics)).to_not be_nil}
+    it { expect(assigns(:hot_nodes)).to_not be_nil}
   end
 
   describe "GET 'show'" do

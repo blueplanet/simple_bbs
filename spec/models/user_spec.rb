@@ -3,9 +3,8 @@ require 'spec_helper'
 describe User do
   it { should have_many(:topics) }
   it { should have_many(:replies) }
-  it { should have_and_belong_to_many(:favorites) }
-
-  it { should respond_to :favorite }
+  it { should have_many(:favorite_topics) }
+  it { should have_many(:favorites) }
 
   describe "#favorite" do
     let(:user) { FactoryGirl.create(:user) }
@@ -16,7 +15,7 @@ describe User do
         user.favorite(topic)
       }.to change(user.favorites, :count).by(1)
 
-      expect(user.favorites).to include(topic)
+      expect(user.favorites).to include topic
     end
   end
 
@@ -30,7 +29,7 @@ describe User do
         user.unfavorite(topic)
       }.to change(user.favorites, :count).by(-1)
 
-      expect(user.favorites).to_not include(topic)
+      expect(user.favorites).to_not include topic
     end
   end
 end

@@ -3,7 +3,7 @@ li.list-group-item.topic-item
     = image_tag avatar_url(topic.author)
   .right-info
     span.pull-right.label.label-info
-      = topic.replies.size
+      = favorites ? topic.favorite_topics.size : topic.replies.size
     .infos
       .title
         = link_to topic.title, topic

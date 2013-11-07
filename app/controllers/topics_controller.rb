@@ -1,13 +1,17 @@
 class TopicsController < ApplicationController
   include ApplicationHelper
 
-  before_action :authenticate_user!, except: [:show, :index]
+  before_action :authenticate_user!, except: [:show, :index, :favorites]
   before_action :set_topic, only: [:show, :edit, :update, :favorite, :unfavorite]
   before_action :set_nodes, only: [:new, :edit, :create]
+  before_action :set_hot_nodes, only: [:index, :favorites]
 
   def index
-    @topics = Topic.order("replies_count DESC").page params[:page]
-    @hot_nodes = Node.order("hot DESC").limit(4)
+    @topics = Topic.all.includes(:node, :author, :last_reply).page params[:page]
+  end
+
+  def favorites
+    @topics = Topic.favs.includes(:node, :author, :last_reply).page params[:page]
   end
 
   def show
@@ -59,6 +63,10 @@ class TopicsController < ApplicationController
 
     def set_nodes
       @nodes = Node.all
+    end
+
+    def set_hot_nodes
+      @hot_nodes = Node.hot.limit(4)
     end
 
     def post_params

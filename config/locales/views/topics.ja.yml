@@ -1,14 +1,16 @@
 ja:
   topics:
+    links:
+      hot_topics: 人気トピック
+      favorites: お気に入り多い
+      non_reply: 書き込みなし
+      last_created: 最新作成
     save: 保存
     notices:
       created: トピック作成しました。
       updated: トピック更新しました。
     index:
       new_topic: トピックを作成
-      hot_topics: 人気トピック
-      non_reply: 書き込みなし
-      new: 最新作成
       nodes: ノード一覧
     new:
       title: トピック新規

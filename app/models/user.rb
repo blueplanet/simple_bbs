@@ -6,13 +6,14 @@ class User < ActiveRecord::Base
 
   has_many :topics, -> { order "created_at DESC" }, foreign_key: "author_id"
   has_many :replies, -> { order "created_at DESC" }, foreign_key: "author_id"
-  has_and_belongs_to_many :favorites, -> { order "created_at DESC"}, class_name: "Topic"
+  has_many :favorite_topics, -> { order "created_at DESC" }
+  has_many :favorites, through: :favorite_topics, source: :topic
 
   def favorite(topic)
-    favorites << topic
+    favorite_topics.create topic: topic
   end
 
   def unfavorite(topic)
-    favorites.delete topic
+    favorite_topics.where(topic: topic).first.try(:destroy)
   end
 end

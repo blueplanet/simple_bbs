@@ -1,0 +1,9 @@
+center
+  .btn-group
+    - {hot_topics: root_path, 
+        favorites: favorites_topics_path, 
+        non_reply: "#", 
+        last_created: "#"}.each do |caption, path|
+
+      = link_to t("topics.links.#{caption}"), path, class: "btn btn-default",
+          disabled: caption == active ? "disabled" : nil
