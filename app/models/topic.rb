@@ -5,6 +5,8 @@ class Topic < ActiveRecord::Base
   belongs_to :author, class_name: "User"
   has_many :replies, -> { order :created_at }
   belongs_to :last_reply, class_name: "Reply"
+  has_many :favorite_topics
+  has_many :favoriters, through: :favorite_topics, source: :user
 
   validates :node_id, presence: true
   validates :title, presence: true

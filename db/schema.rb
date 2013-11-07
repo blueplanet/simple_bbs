@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131106061844) do
+ActiveRecord::Schema.define(version: 20131107021954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "favorie_topics", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorie_topics", ["topic_id"], name: "index_favorie_topics_on_topic_id", using: :btree
+  add_index "favorie_topics", ["user_id"], name: "index_favorie_topics_on_user_id", using: :btree
+
+  create_table "favorite_topics", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorite_topics", ["topic_id"], name: "index_favorite_topics_on_topic_id", using: :btree
+  add_index "favorite_topics", ["user_id"], name: "index_favorite_topics_on_user_id", using: :btree
 
   create_table "nodes", force: true do |t|
     t.string   "name"
@@ -41,19 +61,12 @@ ActiveRecord::Schema.define(version: 20131106061844) do
     t.datetime "updated_at"
     t.integer  "node_id"
     t.text     "body"
-    t.integer  "replies_count", default: 0, null: false
+    t.integer  "replies_count",         default: 0, null: false
     t.integer  "author_id"
     t.integer  "last_reply_id"
     t.text     "body_html"
+    t.integer  "favorite_topics_count", default: 0
   end
-
-  create_table "topics_users", id: false, force: true do |t|
-    t.integer "user_id"
-    t.integer "topic_id"
-  end
-
-  add_index "topics_users", ["topic_id"], name: "index_topics_users_on_topic_id", using: :btree
-  add_index "topics_users", ["user_id"], name: "index_topics_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
