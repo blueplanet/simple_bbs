@@ -1,12 +1,12 @@
-= render "breadcrumb", active: ".hot_topics"
+= render "breadcrumb", active: ".favorites"
 
 .row
   .col-lg-9
     .panel.panel-default
       .panel-heading
-        = render "buttons", active: :hot_topics
+        = render "buttons", active: :favorites
       ul#topics.list-group
-        = render partial: "topic", collection: @topics, locals: {show_node: true, favorites: false}
+        = render partial: "topic", collection: @topics, locals: {show_node: true, favorites: true}
       .panel-footer
         center
           = paginate @topics

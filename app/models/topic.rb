@@ -1,5 +1,8 @@
 class Topic < ActiveRecord::Base
   include ApplicationHelper
+
+  default_scope { order "replies_count DESC" }
+  scope :favs, -> { order "favorite_topics_count DESC" }
   
   belongs_to :node
   belongs_to :author, class_name: "User"
