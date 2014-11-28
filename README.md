@@ -4,3 +4,5 @@
 [![Code Climate](https://codeclimate.com/github/blueplanet/simple_bbs.png)](https://codeclimate.com/github/blueplanet/simple_bbs)
 
 * シンプルな掲示板
+
+test
